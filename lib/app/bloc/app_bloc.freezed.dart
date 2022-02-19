@@ -29,6 +29,12 @@ class _$AppEventTearOff {
   _Disconnected disconnected() {
     return const _Disconnected();
   }
+
+  _ChangeLanguage changeLanguage(String lang) {
+    return _ChangeLanguage(
+      lang,
+    );
+  }
 }
 
 /// @nodoc
@@ -41,6 +47,7 @@ mixin _$AppEvent {
     required TResult Function() started,
     required TResult Function() connected,
     required TResult Function() disconnected,
+    required TResult Function(String lang) changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +55,7 @@ mixin _$AppEvent {
     TResult Function()? started,
     TResult Function()? connected,
     TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +63,7 @@ mixin _$AppEvent {
     TResult Function()? started,
     TResult Function()? connected,
     TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +72,7 @@ mixin _$AppEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_ChangeLanguage value) changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +80,7 @@ mixin _$AppEvent {
     TResult Function(_Started value)? started,
     TResult Function(_Connected value)? connected,
     TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +88,7 @@ mixin _$AppEvent {
     TResult Function(_Started value)? started,
     TResult Function(_Connected value)? connected,
     TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,6 +150,7 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function() connected,
     required TResult Function() disconnected,
+    required TResult Function(String lang) changeLanguage,
   }) {
     return started();
   }
@@ -148,6 +161,7 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function()? connected,
     TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
   }) {
     return started?.call();
   }
@@ -158,6 +172,7 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function()? connected,
     TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,6 +187,7 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_ChangeLanguage value) changeLanguage,
   }) {
     return started(this);
   }
@@ -182,6 +198,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_Connected value)? connected,
     TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
   }) {
     return started?.call(this);
   }
@@ -192,6 +209,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_Connected value)? connected,
     TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -247,6 +265,7 @@ class _$_Connected implements _Connected {
     required TResult Function() started,
     required TResult Function() connected,
     required TResult Function() disconnected,
+    required TResult Function(String lang) changeLanguage,
   }) {
     return connected();
   }
@@ -257,6 +276,7 @@ class _$_Connected implements _Connected {
     TResult Function()? started,
     TResult Function()? connected,
     TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
   }) {
     return connected?.call();
   }
@@ -267,6 +287,7 @@ class _$_Connected implements _Connected {
     TResult Function()? started,
     TResult Function()? connected,
     TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
     required TResult orElse(),
   }) {
     if (connected != null) {
@@ -281,6 +302,7 @@ class _$_Connected implements _Connected {
     required TResult Function(_Started value) started,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_ChangeLanguage value) changeLanguage,
   }) {
     return connected(this);
   }
@@ -291,6 +313,7 @@ class _$_Connected implements _Connected {
     TResult Function(_Started value)? started,
     TResult Function(_Connected value)? connected,
     TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
   }) {
     return connected?.call(this);
   }
@@ -301,6 +324,7 @@ class _$_Connected implements _Connected {
     TResult Function(_Started value)? started,
     TResult Function(_Connected value)? connected,
     TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (connected != null) {
@@ -357,6 +381,7 @@ class _$_Disconnected implements _Disconnected {
     required TResult Function() started,
     required TResult Function() connected,
     required TResult Function() disconnected,
+    required TResult Function(String lang) changeLanguage,
   }) {
     return disconnected();
   }
@@ -367,6 +392,7 @@ class _$_Disconnected implements _Disconnected {
     TResult Function()? started,
     TResult Function()? connected,
     TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
   }) {
     return disconnected?.call();
   }
@@ -377,6 +403,7 @@ class _$_Disconnected implements _Disconnected {
     TResult Function()? started,
     TResult Function()? connected,
     TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
     required TResult orElse(),
   }) {
     if (disconnected != null) {
@@ -391,6 +418,7 @@ class _$_Disconnected implements _Disconnected {
     required TResult Function(_Started value) started,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_ChangeLanguage value) changeLanguage,
   }) {
     return disconnected(this);
   }
@@ -401,6 +429,7 @@ class _$_Disconnected implements _Disconnected {
     TResult Function(_Started value)? started,
     TResult Function(_Connected value)? connected,
     TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
   }) {
     return disconnected?.call(this);
   }
@@ -411,6 +440,7 @@ class _$_Disconnected implements _Disconnected {
     TResult Function(_Started value)? started,
     TResult Function(_Connected value)? connected,
     TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (disconnected != null) {
@@ -425,12 +455,158 @@ abstract class _Disconnected implements AppEvent {
 }
 
 /// @nodoc
+abstract class _$ChangeLanguageCopyWith<$Res> {
+  factory _$ChangeLanguageCopyWith(
+          _ChangeLanguage value, $Res Function(_ChangeLanguage) then) =
+      __$ChangeLanguageCopyWithImpl<$Res>;
+  $Res call({String lang});
+}
+
+/// @nodoc
+class __$ChangeLanguageCopyWithImpl<$Res> extends _$AppEventCopyWithImpl<$Res>
+    implements _$ChangeLanguageCopyWith<$Res> {
+  __$ChangeLanguageCopyWithImpl(
+      _ChangeLanguage _value, $Res Function(_ChangeLanguage) _then)
+      : super(_value, (v) => _then(v as _ChangeLanguage));
+
+  @override
+  _ChangeLanguage get _value => super._value as _ChangeLanguage;
+
+  @override
+  $Res call({
+    Object? lang = freezed,
+  }) {
+    return _then(_ChangeLanguage(
+      lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ChangeLanguage implements _ChangeLanguage {
+  const _$_ChangeLanguage(this.lang);
+
+  @override
+  final String lang;
+
+  @override
+  String toString() {
+    return 'AppEvent.changeLanguage(lang: $lang)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ChangeLanguage &&
+            const DeepCollectionEquality().equals(other.lang, lang));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(lang));
+
+  @JsonKey(ignore: true)
+  @override
+  _$ChangeLanguageCopyWith<_ChangeLanguage> get copyWith =>
+      __$ChangeLanguageCopyWithImpl<_ChangeLanguage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() connected,
+    required TResult Function() disconnected,
+    required TResult Function(String lang) changeLanguage,
+  }) {
+    return changeLanguage(lang);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? connected,
+    TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
+  }) {
+    return changeLanguage?.call(lang);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? connected,
+    TResult Function()? disconnected,
+    TResult Function(String lang)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (changeLanguage != null) {
+      return changeLanguage(lang);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Connected value) connected,
+    required TResult Function(_Disconnected value) disconnected,
+    required TResult Function(_ChangeLanguage value) changeLanguage,
+  }) {
+    return changeLanguage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
+  }) {
+    return changeLanguage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Connected value)? connected,
+    TResult Function(_Disconnected value)? disconnected,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (changeLanguage != null) {
+      return changeLanguage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeLanguage implements AppEvent {
+  const factory _ChangeLanguage(String lang) = _$_ChangeLanguage;
+
+  String get lang;
+  @JsonKey(ignore: true)
+  _$ChangeLanguageCopyWith<_ChangeLanguage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$AppStateTearOff {
   const _$AppStateTearOff();
 
-  _Initial initial({bool online = false}) {
+  _Initial initial({bool online = false, String lang = 'en'}) {
     return _Initial(
       online: online,
+      lang: lang,
     );
   }
 }
@@ -441,20 +617,21 @@ const $AppState = _$AppStateTearOff();
 /// @nodoc
 mixin _$AppState {
   bool get online => throw _privateConstructorUsedError;
+  String get lang => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool online) initial,
+    required TResult Function(bool online, String lang) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool online)? initial,
+    TResult Function(bool online, String lang)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool online)? initial,
+    TResult Function(bool online, String lang)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -484,7 +661,7 @@ mixin _$AppState {
 abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res>;
-  $Res call({bool online});
+  $Res call({bool online, String lang});
 }
 
 /// @nodoc
@@ -498,12 +675,17 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $Res call({
     Object? online = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_value.copyWith(
       online: online == freezed
           ? _value.online
           : online // ignore: cast_nullable_to_non_nullable
               as bool,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -513,7 +695,7 @@ abstract class _$InitialCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
   @override
-  $Res call({bool online});
+  $Res call({bool online, String lang});
 }
 
 /// @nodoc
@@ -528,12 +710,17 @@ class __$InitialCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? online = freezed,
+    Object? lang = freezed,
   }) {
     return _then(_Initial(
       online: online == freezed
           ? _value.online
           : online // ignore: cast_nullable_to_non_nullable
               as bool,
+      lang: lang == freezed
+          ? _value.lang
+          : lang // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -541,15 +728,18 @@ class __$InitialCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({this.online = false});
+  const _$_Initial({this.online = false, this.lang = 'en'});
 
   @JsonKey()
   @override
   final bool online;
+  @JsonKey()
+  @override
+  final String lang;
 
   @override
   String toString() {
-    return 'AppState.initial(online: $online)';
+    return 'AppState.initial(online: $online, lang: $lang)';
   }
 
   @override
@@ -557,12 +747,15 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Initial &&
-            const DeepCollectionEquality().equals(other.online, online));
+            const DeepCollectionEquality().equals(other.online, online) &&
+            const DeepCollectionEquality().equals(other.lang, lang));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(online));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(online),
+      const DeepCollectionEquality().hash(lang));
 
   @JsonKey(ignore: true)
   @override
@@ -572,27 +765,27 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool online) initial,
+    required TResult Function(bool online, String lang) initial,
   }) {
-    return initial(online);
+    return initial(online, lang);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool online)? initial,
+    TResult Function(bool online, String lang)? initial,
   }) {
-    return initial?.call(online);
+    return initial?.call(online, lang);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool online)? initial,
+    TResult Function(bool online, String lang)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(online);
+      return initial(online, lang);
     }
     return orElse();
   }
@@ -627,10 +820,12 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AppState {
-  const factory _Initial({bool online}) = _$_Initial;
+  const factory _Initial({bool online, String lang}) = _$_Initial;
 
   @override
   bool get online;
+  @override
+  String get lang;
   @override
   @JsonKey(ignore: true)
   _$InitialCopyWith<_Initial> get copyWith =>

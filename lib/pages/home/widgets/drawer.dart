@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swir/app/bloc/app_bloc.dart';
+import 'package:swir/l10n/l10n.dart';
 import 'package:swir/pages/home/bloc/home_bloc.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -9,20 +10,27 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: const EdgeInsets.all(15),
+        decoration: const BoxDecoration(
+          border: Border(
+            right: BorderSide(
+              color: Colors.white10,
+            ),
+          ),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
-            Text('Puedes...'),
-            SizedBox(height: 10),
-            OnlineModeSwitch(),
-            SizedBox(height: 20),
-            Text('Algo...'),
-            SizedBox(height: 10),
-            DownloadDataButton(),
+          children: <Widget>[
+            Text(context.l10n.homeDrawerText1),
+            const SizedBox(height: 15),
+            const OnlineModeSwitch(),
+            const SizedBox(height: 25),
+            Text(context.l10n.homeDrawerText2),
+            const SizedBox(height: 15),
+            const DownloadDataButton(),
           ],
         ),
       ),
@@ -40,45 +48,22 @@ class DownloadDataButton extends StatelessWidget {
     final appStateOnline = context.select((AppBloc bloc) => bloc.state.online);
 
     return _DecorativeBorder(
-      child: ElevatedButton(
-        child: const Text('Add'),
-        onPressed: appStateOnline
-            ? () async {
-                context.read<HomeBloc>().add(const DownloadDataPressed());
-              }
-            : null,
+      child: SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          child: Text(context.l10n.homeDrawerUpdateLocalDB),
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+          ),
+          onPressed: appStateOnline
+              ? () async {
+                  context.read<HomeBloc>().add(const DownloadDataPressed());
+                }
+              : null,
+        ),
       ),
     );
   }
-
-  // BlocBuilder<HomeBloc, HomeState>(
-  //   buildWhen: (previous, current) => current.maybeWhen(
-  //     downloading: () => true,
-  //     downloaded: () => true,
-  //     orElse: () => false,
-  //   ),
-  //   builder: (context, state) {
-  //     state.maybeWhen(
-  //       downloading: () {
-  //         nextView = const Center(child: CircularProgressIndicator());
-  //       },
-  //       downloaded: () {
-  //         nextView = const Center(child: Text('Emtpy'));
-  //       },
-  //       error: () {
-  //         nextView = const Center(
-  //           child: Text('Something went wrong, please try again!'),
-  //         );
-  //       },
-  //       orElse: () {
-  //         nextView = const Center(
-  //             child: Text('OrElse!!!!!!!!!!!!!!!!!!!!!!!!!!!!'));
-  //       },
-  //     );
-  //     return nextView;
-  //   },
-  // )
-
 }
 
 class OnlineModeSwitch extends StatelessWidget {
@@ -96,7 +81,7 @@ class OnlineModeSwitch extends StatelessWidget {
         title: RichText(
           text: TextSpan(
             children: [
-              const TextSpan(text: 'Modo: '),
+              TextSpan(text: '${context.l10n.homeDrawerMode} '),
               TextSpan(
                 text: state ? 'ONLINE' : 'OFFLINE',
                 style: TextStyle(
@@ -107,7 +92,7 @@ class OnlineModeSwitch extends StatelessWidget {
             ],
           ),
         ),
-        contentPadding: const EdgeInsets.fromLTRB(20, 8, 10, 8),
+        contentPadding: const EdgeInsets.fromLTRB(20, 3, 10, 3),
         value: state,
         onChanged: (value) {
           var appBloc = context.read<AppBloc>();

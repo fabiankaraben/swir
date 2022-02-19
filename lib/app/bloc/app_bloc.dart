@@ -16,5 +16,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<_Disconnected>((event, emit) {
       emit(state.copyWith(online: false));
     });
+    on<_ChangeLanguage>((event, emit) {
+      emit(state.copyWith(lang: event.lang));
+    });
   }
 }

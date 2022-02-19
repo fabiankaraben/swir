@@ -30,6 +30,30 @@ class WSRITheme {
         behavior: SnackBarBehavior.floating,
       ),
       toggleableActiveColor: const Color(0xFF13B9FF),
+      drawerTheme: DrawerThemeData(
+        backgroundColor: Colors.black.withOpacity(.9),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          primary: const Color(0xFFCC0996),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          primary: const Color(0xFFCC0996),
+        ),
+      ),
+      switchTheme: SwitchThemeData(
+        thumbColor: MaterialStateProperty.resolveWith(
+          (states) => states.contains(MaterialState.selected)
+              ? const Color(0xFFCC0996)
+              : null,
+        ),
+        trackColor: MaterialStateProperty.all(Colors.white38),
+      ),
+      dialogTheme: DialogTheme(
+        backgroundColor: Colors.black.withOpacity(.93),
+      ),
     );
   }
 }

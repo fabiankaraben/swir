@@ -5,8 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:swir/app/bloc/app_bloc.dart';
 import 'package:swir/l10n/l10n.dart';
+import 'package:swir/pages/details/view/details_page.dart';
 import 'package:swir/pages/home/home.dart';
+import 'package:swir/themes/bloc/theme_bloc.dart';
 import 'package:swir/themes/themes.dart';
+import 'package:swir/themes/themes/simple_theme.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -38,18 +41,39 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: WSRITheme.dark,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AppBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ThemeBloc(
+            themes: const [
+              SimpleTheme(),
+            ],
+          ),
+        ),
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => AppBloc(),
-        child: const HomePage(),
-      ),
+      child: Builder(builder: (context) {
+        // final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
+        final lang = context.select((AppBloc bloc) => bloc.state.lang);
+
+        return MaterialApp(
+          theme: WSRITheme.dark,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: Locale(lang),
+          debugShowCheckedModeBanner: false,
+          routes: {
+            '/': (context) => const HomePage(),
+            '/details': (context) => const DetailsPage(),
+          },
+          initialRoute: '/',
+        );
+      }),
     );
   }
 }

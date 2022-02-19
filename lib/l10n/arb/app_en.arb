@@ -1,23 +1,32 @@
 {
     "@@locale": "en",
-    "homeChallengeTitle": "Home Challenge",
-    "@homeChallengeTitle": {
-        "description": "Shown as the title of the home"
-    },
-    "homeNumberOfMoves": "Moves",
-    "@homeNumberOfMoves": {
-        "description": "Indicates how many moves have been made on the current home"
-    },
-    "homeNumberOfTilesLeft": "Tiles",
-    "@homeNumberOfTilesLeft": {
-        "description": "Indicates how many home tiles are not in their correct position"
-    },
-    "homeShuffle": "Shuffle",
-    "@homeShuffle": {
-        "description": "Shown on the button that shuffle the home"
-    },
-    "homeCompleted": "Well done. Congrats!",
-    "@homeCompleted": {
-        "description": "Shown as the success state when the home is completed"
-    }
+    "gralSomethingWentWrong": "Something went wrong!",
+    "gralSave": "Save",
+    "homeHaveYouSeenSpacerInvader": "Have you seen a space invader?",
+    "homeSearch": "Search",
+    "homeDrawerText1": "You can activate the ONLINE mode if you are sure that the network is secure:",
+    "homeDrawerMode": "Mode:",
+    "homeDrawerText2": "You can update your local database if the connection mode is ONLINE:",
+    "homeDrawerUpdateLocalDB": "Update local database",
+    "homeHeight": "Height:",
+    "homeMass": "Mass:",
+    "homeGender": "Gender:",
+    "homeSettings": "Settings",
+    "homeSettingsLanguage": "Language:",
+    "detailsHeight": "Height:",
+    "detailsMass": "Mass:",
+    "detailsGender": "Gender:",
+    "detailsHairColor": "Hair color:",
+    "detailsSkinColor": "Skin color:",
+    "detailsEyeColor": "Eye color:",
+    "detailsHomeworld": "PlanetaHomeworld:",
+    "detailsVehicles": "Vehicles:",
+    "detailsStarships": "Starships:",
+    "detailsNoVehicles": "No vehicles",
+    "detailsNoStarships": "No starships",
+    "detailsReportButtonIntro": "Use the button below to inform the authorities that you saw this invader.",
+    "detailsReportButtonText": "Report invader",
+    "detailsConfirmReport": "Confirm report",
+    "detailsConfirmReportQuestion": "Are you sure you want to report ",
+    "detailsReport": "Report"
 }
