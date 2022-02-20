@@ -2,7 +2,9 @@ part of 'home_bloc.dart';
 
 @freezed
 class HomeEvent with _$HomeEvent {
-  // const factory HomeEvent.started() = _Started;
-  const factory HomeEvent.fetchSummary() = HomeListEvent;
-  const factory HomeEvent.downloadDataPressed() = DownloadDataPressed;
+  const factory HomeEvent.started() = _Started;
+  const factory HomeEvent.downloadDataPressed() = _DownloadDataPressed;
+  const factory HomeEvent.searchCriteriaChanged({
+    required String criteria,
+  }) = _SearchCriteriaChanged;
 }

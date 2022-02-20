@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:swir/layout/layout.dart';
 
 /// {@template home_theme}
 /// Template for creating custom home UI.

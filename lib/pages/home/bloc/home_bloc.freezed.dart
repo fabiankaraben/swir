@@ -18,12 +18,18 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$HomeEventTearOff {
   const _$HomeEventTearOff();
 
-  HomeListEvent fetchSummary() {
-    return const HomeListEvent();
+  _Started started() {
+    return const _Started();
   }
 
-  DownloadDataPressed downloadDataPressed() {
-    return const DownloadDataPressed();
+  _DownloadDataPressed downloadDataPressed() {
+    return const _DownloadDataPressed();
+  }
+
+  _SearchCriteriaChanged searchCriteriaChanged({required String criteria}) {
+    return _SearchCriteriaChanged(
+      criteria: criteria,
+    );
   }
 }
 
@@ -34,39 +40,46 @@ const $HomeEvent = _$HomeEventTearOff();
 mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchSummary,
+    required TResult Function() started,
     required TResult Function() downloadDataPressed,
+    required TResult Function(String criteria) searchCriteriaChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchSummary,
+    TResult Function()? started,
     TResult Function()? downloadDataPressed,
+    TResult Function(String criteria)? searchCriteriaChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchSummary,
+    TResult Function()? started,
     TResult Function()? downloadDataPressed,
+    TResult Function(String criteria)? searchCriteriaChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(HomeListEvent value) fetchSummary,
-    required TResult Function(DownloadDataPressed value) downloadDataPressed,
+    required TResult Function(_Started value) started,
+    required TResult Function(_DownloadDataPressed value) downloadDataPressed,
+    required TResult Function(_SearchCriteriaChanged value)
+        searchCriteriaChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(HomeListEvent value)? fetchSummary,
-    TResult Function(DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_Started value)? started,
+    TResult Function(_DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_SearchCriteriaChanged value)? searchCriteriaChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(HomeListEvent value)? fetchSummary,
-    TResult Function(DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_Started value)? started,
+    TResult Function(_DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_SearchCriteriaChanged value)? searchCriteriaChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -88,43 +101,41 @@ class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $HomeListEventCopyWith<$Res> {
-  factory $HomeListEventCopyWith(
-          HomeListEvent value, $Res Function(HomeListEvent) then) =
-      _$HomeListEventCopyWithImpl<$Res>;
+abstract class _$StartedCopyWith<$Res> {
+  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
+      __$StartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$HomeListEventCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
-    implements $HomeListEventCopyWith<$Res> {
-  _$HomeListEventCopyWithImpl(
-      HomeListEvent _value, $Res Function(HomeListEvent) _then)
-      : super(_value, (v) => _then(v as HomeListEvent));
+class __$StartedCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements _$StartedCopyWith<$Res> {
+  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
+      : super(_value, (v) => _then(v as _Started));
 
   @override
-  HomeListEvent get _value => super._value as HomeListEvent;
+  _Started get _value => super._value as _Started;
 }
 
 /// @nodoc
 
-class _$HomeListEvent with DiagnosticableTreeMixin implements HomeListEvent {
-  const _$HomeListEvent();
+class _$_Started with DiagnosticableTreeMixin implements _Started {
+  const _$_Started();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeEvent.fetchSummary()';
+    return 'HomeEvent.started()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'HomeEvent.fetchSummary'));
+    properties..add(DiagnosticsProperty('type', 'HomeEvent.started'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is HomeListEvent);
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -133,30 +144,33 @@ class _$HomeListEvent with DiagnosticableTreeMixin implements HomeListEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchSummary,
+    required TResult Function() started,
     required TResult Function() downloadDataPressed,
+    required TResult Function(String criteria) searchCriteriaChanged,
   }) {
-    return fetchSummary();
+    return started();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchSummary,
+    TResult Function()? started,
     TResult Function()? downloadDataPressed,
+    TResult Function(String criteria)? searchCriteriaChanged,
   }) {
-    return fetchSummary?.call();
+    return started?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchSummary,
+    TResult Function()? started,
     TResult Function()? downloadDataPressed,
+    TResult Function(String criteria)? searchCriteriaChanged,
     required TResult orElse(),
   }) {
-    if (fetchSummary != null) {
-      return fetchSummary();
+    if (started != null) {
+      return started();
     }
     return orElse();
   }
@@ -164,64 +178,68 @@ class _$HomeListEvent with DiagnosticableTreeMixin implements HomeListEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(HomeListEvent value) fetchSummary,
-    required TResult Function(DownloadDataPressed value) downloadDataPressed,
+    required TResult Function(_Started value) started,
+    required TResult Function(_DownloadDataPressed value) downloadDataPressed,
+    required TResult Function(_SearchCriteriaChanged value)
+        searchCriteriaChanged,
   }) {
-    return fetchSummary(this);
+    return started(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(HomeListEvent value)? fetchSummary,
-    TResult Function(DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_Started value)? started,
+    TResult Function(_DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_SearchCriteriaChanged value)? searchCriteriaChanged,
   }) {
-    return fetchSummary?.call(this);
+    return started?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(HomeListEvent value)? fetchSummary,
-    TResult Function(DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_Started value)? started,
+    TResult Function(_DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_SearchCriteriaChanged value)? searchCriteriaChanged,
     required TResult orElse(),
   }) {
-    if (fetchSummary != null) {
-      return fetchSummary(this);
+    if (started != null) {
+      return started(this);
     }
     return orElse();
   }
 }
 
-abstract class HomeListEvent implements HomeEvent {
-  const factory HomeListEvent() = _$HomeListEvent;
+abstract class _Started implements HomeEvent {
+  const factory _Started() = _$_Started;
 }
 
 /// @nodoc
-abstract class $DownloadDataPressedCopyWith<$Res> {
-  factory $DownloadDataPressedCopyWith(
-          DownloadDataPressed value, $Res Function(DownloadDataPressed) then) =
-      _$DownloadDataPressedCopyWithImpl<$Res>;
+abstract class _$DownloadDataPressedCopyWith<$Res> {
+  factory _$DownloadDataPressedCopyWith(_DownloadDataPressed value,
+          $Res Function(_DownloadDataPressed) then) =
+      __$DownloadDataPressedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DownloadDataPressedCopyWithImpl<$Res>
+class __$DownloadDataPressedCopyWithImpl<$Res>
     extends _$HomeEventCopyWithImpl<$Res>
-    implements $DownloadDataPressedCopyWith<$Res> {
-  _$DownloadDataPressedCopyWithImpl(
-      DownloadDataPressed _value, $Res Function(DownloadDataPressed) _then)
-      : super(_value, (v) => _then(v as DownloadDataPressed));
+    implements _$DownloadDataPressedCopyWith<$Res> {
+  __$DownloadDataPressedCopyWithImpl(
+      _DownloadDataPressed _value, $Res Function(_DownloadDataPressed) _then)
+      : super(_value, (v) => _then(v as _DownloadDataPressed));
 
   @override
-  DownloadDataPressed get _value => super._value as DownloadDataPressed;
+  _DownloadDataPressed get _value => super._value as _DownloadDataPressed;
 }
 
 /// @nodoc
 
-class _$DownloadDataPressed
+class _$_DownloadDataPressed
     with DiagnosticableTreeMixin
-    implements DownloadDataPressed {
-  const _$DownloadDataPressed();
+    implements _DownloadDataPressed {
+  const _$_DownloadDataPressed();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -238,7 +256,7 @@ class _$DownloadDataPressed
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DownloadDataPressed);
+        (other.runtimeType == runtimeType && other is _DownloadDataPressed);
   }
 
   @override
@@ -247,8 +265,9 @@ class _$DownloadDataPressed
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchSummary,
+    required TResult Function() started,
     required TResult Function() downloadDataPressed,
+    required TResult Function(String criteria) searchCriteriaChanged,
   }) {
     return downloadDataPressed();
   }
@@ -256,8 +275,9 @@ class _$DownloadDataPressed
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchSummary,
+    TResult Function()? started,
     TResult Function()? downloadDataPressed,
+    TResult Function(String criteria)? searchCriteriaChanged,
   }) {
     return downloadDataPressed?.call();
   }
@@ -265,8 +285,9 @@ class _$DownloadDataPressed
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchSummary,
+    TResult Function()? started,
     TResult Function()? downloadDataPressed,
+    TResult Function(String criteria)? searchCriteriaChanged,
     required TResult orElse(),
   }) {
     if (downloadDataPressed != null) {
@@ -278,8 +299,10 @@ class _$DownloadDataPressed
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(HomeListEvent value) fetchSummary,
-    required TResult Function(DownloadDataPressed value) downloadDataPressed,
+    required TResult Function(_Started value) started,
+    required TResult Function(_DownloadDataPressed value) downloadDataPressed,
+    required TResult Function(_SearchCriteriaChanged value)
+        searchCriteriaChanged,
   }) {
     return downloadDataPressed(this);
   }
@@ -287,8 +310,9 @@ class _$DownloadDataPressed
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(HomeListEvent value)? fetchSummary,
-    TResult Function(DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_Started value)? started,
+    TResult Function(_DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_SearchCriteriaChanged value)? searchCriteriaChanged,
   }) {
     return downloadDataPressed?.call(this);
   }
@@ -296,8 +320,9 @@ class _$DownloadDataPressed
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(HomeListEvent value)? fetchSummary,
-    TResult Function(DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_Started value)? started,
+    TResult Function(_DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_SearchCriteriaChanged value)? searchCriteriaChanged,
     required TResult orElse(),
   }) {
     if (downloadDataPressed != null) {
@@ -307,32 +332,180 @@ class _$DownloadDataPressed
   }
 }
 
-abstract class DownloadDataPressed implements HomeEvent {
-  const factory DownloadDataPressed() = _$DownloadDataPressed;
+abstract class _DownloadDataPressed implements HomeEvent {
+  const factory _DownloadDataPressed() = _$_DownloadDataPressed;
+}
+
+/// @nodoc
+abstract class _$SearchCriteriaChangedCopyWith<$Res> {
+  factory _$SearchCriteriaChangedCopyWith(_SearchCriteriaChanged value,
+          $Res Function(_SearchCriteriaChanged) then) =
+      __$SearchCriteriaChangedCopyWithImpl<$Res>;
+  $Res call({String criteria});
+}
+
+/// @nodoc
+class __$SearchCriteriaChangedCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res>
+    implements _$SearchCriteriaChangedCopyWith<$Res> {
+  __$SearchCriteriaChangedCopyWithImpl(_SearchCriteriaChanged _value,
+      $Res Function(_SearchCriteriaChanged) _then)
+      : super(_value, (v) => _then(v as _SearchCriteriaChanged));
+
+  @override
+  _SearchCriteriaChanged get _value => super._value as _SearchCriteriaChanged;
+
+  @override
+  $Res call({
+    Object? criteria = freezed,
+  }) {
+    return _then(_SearchCriteriaChanged(
+      criteria: criteria == freezed
+          ? _value.criteria
+          : criteria // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SearchCriteriaChanged
+    with DiagnosticableTreeMixin
+    implements _SearchCriteriaChanged {
+  const _$_SearchCriteriaChanged({required this.criteria});
+
+  @override
+  final String criteria;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeEvent.searchCriteriaChanged(criteria: $criteria)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeEvent.searchCriteriaChanged'))
+      ..add(DiagnosticsProperty('criteria', criteria));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SearchCriteriaChanged &&
+            const DeepCollectionEquality().equals(other.criteria, criteria));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(criteria));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchCriteriaChangedCopyWith<_SearchCriteriaChanged> get copyWith =>
+      __$SearchCriteriaChangedCopyWithImpl<_SearchCriteriaChanged>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() downloadDataPressed,
+    required TResult Function(String criteria) searchCriteriaChanged,
+  }) {
+    return searchCriteriaChanged(criteria);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? downloadDataPressed,
+    TResult Function(String criteria)? searchCriteriaChanged,
+  }) {
+    return searchCriteriaChanged?.call(criteria);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? downloadDataPressed,
+    TResult Function(String criteria)? searchCriteriaChanged,
+    required TResult orElse(),
+  }) {
+    if (searchCriteriaChanged != null) {
+      return searchCriteriaChanged(criteria);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_DownloadDataPressed value) downloadDataPressed,
+    required TResult Function(_SearchCriteriaChanged value)
+        searchCriteriaChanged,
+  }) {
+    return searchCriteriaChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_SearchCriteriaChanged value)? searchCriteriaChanged,
+  }) {
+    return searchCriteriaChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_DownloadDataPressed value)? downloadDataPressed,
+    TResult Function(_SearchCriteriaChanged value)? searchCriteriaChanged,
+    required TResult orElse(),
+  }) {
+    if (searchCriteriaChanged != null) {
+      return searchCriteriaChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchCriteriaChanged implements HomeEvent {
+  const factory _SearchCriteriaChanged({required String criteria}) =
+      _$_SearchCriteriaChanged;
+
+  String get criteria;
+  @JsonKey(ignore: true)
+  _$SearchCriteriaChangedCopyWith<_SearchCriteriaChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$HomeStateTearOff {
   const _$HomeStateTearOff();
 
-  _HomeListLoading loading() {
-    return const _HomeListLoading();
-  }
-
-  _HomeListEmpty empty() {
-    return const _HomeListEmpty();
-  }
-
-  _HomeListContent content(
-      {required List<Person> list, bool downloadingData = false}) {
-    return _HomeListContent(
+  _HomeStateAll all(
+      {bool isLoading = false,
+      List<Person> list = const [],
+      String searchCriteria = '',
+      bool isDownloadingData = false,
+      String error = ''}) {
+    return _HomeStateAll(
+      isLoading: isLoading,
       list: list,
-      downloadingData: downloadingData,
+      searchCriteria: searchCriteria,
+      isDownloadingData: isDownloadingData,
+      error: error,
     );
-  }
-
-  _HomeListError error() {
-    return const _HomeListError();
   }
 }
 
@@ -341,55 +514,53 @@ const $HomeState = _$HomeStateTearOff();
 
 /// @nodoc
 mixin _$HomeState {
+  bool get isLoading => throw _privateConstructorUsedError;
+  List<Person> get list => throw _privateConstructorUsedError;
+  String get searchCriteria => throw _privateConstructorUsedError;
+  bool get isDownloadingData => throw _privateConstructorUsedError;
+  String get error => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function() empty,
-    required TResult Function(List<Person> list, bool downloadingData) content,
-    required TResult Function() error,
+    required TResult Function(bool isLoading, List<Person> list,
+            String searchCriteria, bool isDownloadingData, String error)
+        all,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
+    TResult Function(bool isLoading, List<Person> list, String searchCriteria,
+            bool isDownloadingData, String error)?
+        all,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
+    TResult Function(bool isLoading, List<Person> list, String searchCriteria,
+            bool isDownloadingData, String error)?
+        all,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeListLoading value) loading,
-    required TResult Function(_HomeListEmpty value) empty,
-    required TResult Function(_HomeListContent value) content,
-    required TResult Function(_HomeListError value) error,
+    required TResult Function(_HomeStateAll value) all,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
+    TResult Function(_HomeStateAll value)? all,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
+    TResult Function(_HomeStateAll value)? all,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeStateCopyWith<HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -397,6 +568,12 @@ mixin _$HomeState {
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res>;
+  $Res call(
+      {bool isLoading,
+      List<Person> list,
+      String searchCriteria,
+      bool isDownloadingData,
+      String error});
 }
 
 /// @nodoc
@@ -406,371 +583,199 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   final HomeState _value;
   // ignore: unused_field
   final $Res Function(HomeState) _then;
-}
-
-/// @nodoc
-abstract class _$HomeListLoadingCopyWith<$Res> {
-  factory _$HomeListLoadingCopyWith(
-          _HomeListLoading value, $Res Function(_HomeListLoading) then) =
-      __$HomeListLoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$HomeListLoadingCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
-    implements _$HomeListLoadingCopyWith<$Res> {
-  __$HomeListLoadingCopyWithImpl(
-      _HomeListLoading _value, $Res Function(_HomeListLoading) _then)
-      : super(_value, (v) => _then(v as _HomeListLoading));
-
-  @override
-  _HomeListLoading get _value => super._value as _HomeListLoading;
-}
-
-/// @nodoc
-
-class _$_HomeListLoading
-    with DiagnosticableTreeMixin
-    implements _HomeListLoading {
-  const _$_HomeListLoading();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.loading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'HomeState.loading'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _HomeListLoading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function() empty,
-    required TResult Function(List<Person> list, bool downloadingData) content,
-    required TResult Function() error,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_HomeListLoading value) loading,
-    required TResult Function(_HomeListEmpty value) empty,
-    required TResult Function(_HomeListContent value) content,
-    required TResult Function(_HomeListError value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _HomeListLoading implements HomeState {
-  const factory _HomeListLoading() = _$_HomeListLoading;
-}
-
-/// @nodoc
-abstract class _$HomeListEmptyCopyWith<$Res> {
-  factory _$HomeListEmptyCopyWith(
-          _HomeListEmpty value, $Res Function(_HomeListEmpty) then) =
-      __$HomeListEmptyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$HomeListEmptyCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
-    implements _$HomeListEmptyCopyWith<$Res> {
-  __$HomeListEmptyCopyWithImpl(
-      _HomeListEmpty _value, $Res Function(_HomeListEmpty) _then)
-      : super(_value, (v) => _then(v as _HomeListEmpty));
-
-  @override
-  _HomeListEmpty get _value => super._value as _HomeListEmpty;
-}
-
-/// @nodoc
-
-class _$_HomeListEmpty with DiagnosticableTreeMixin implements _HomeListEmpty {
-  const _$_HomeListEmpty();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.empty()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'HomeState.empty'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _HomeListEmpty);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function() empty,
-    required TResult Function(List<Person> list, bool downloadingData) content,
-    required TResult Function() error,
-  }) {
-    return empty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
-  }) {
-    return empty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (empty != null) {
-      return empty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_HomeListLoading value) loading,
-    required TResult Function(_HomeListEmpty value) empty,
-    required TResult Function(_HomeListContent value) content,
-    required TResult Function(_HomeListError value) error,
-  }) {
-    return empty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
-  }) {
-    return empty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
-    required TResult orElse(),
-  }) {
-    if (empty != null) {
-      return empty(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _HomeListEmpty implements HomeState {
-  const factory _HomeListEmpty() = _$_HomeListEmpty;
-}
-
-/// @nodoc
-abstract class _$HomeListContentCopyWith<$Res> {
-  factory _$HomeListContentCopyWith(
-          _HomeListContent value, $Res Function(_HomeListContent) then) =
-      __$HomeListContentCopyWithImpl<$Res>;
-  $Res call({List<Person> list, bool downloadingData});
-}
-
-/// @nodoc
-class __$HomeListContentCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
-    implements _$HomeListContentCopyWith<$Res> {
-  __$HomeListContentCopyWithImpl(
-      _HomeListContent _value, $Res Function(_HomeListContent) _then)
-      : super(_value, (v) => _then(v as _HomeListContent));
-
-  @override
-  _HomeListContent get _value => super._value as _HomeListContent;
 
   @override
   $Res call({
+    Object? isLoading = freezed,
     Object? list = freezed,
-    Object? downloadingData = freezed,
+    Object? searchCriteria = freezed,
+    Object? isDownloadingData = freezed,
+    Object? error = freezed,
   }) {
-    return _then(_HomeListContent(
+    return _then(_value.copyWith(
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       list: list == freezed
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<Person>,
-      downloadingData: downloadingData == freezed
-          ? _value.downloadingData
-          : downloadingData // ignore: cast_nullable_to_non_nullable
+      searchCriteria: searchCriteria == freezed
+          ? _value.searchCriteria
+          : searchCriteria // ignore: cast_nullable_to_non_nullable
+              as String,
+      isDownloadingData: isDownloadingData == freezed
+          ? _value.isDownloadingData
+          : isDownloadingData // ignore: cast_nullable_to_non_nullable
               as bool,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$HomeStateAllCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
+  factory _$HomeStateAllCopyWith(
+          _HomeStateAll value, $Res Function(_HomeStateAll) then) =
+      __$HomeStateAllCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {bool isLoading,
+      List<Person> list,
+      String searchCriteria,
+      bool isDownloadingData,
+      String error});
+}
+
+/// @nodoc
+class __$HomeStateAllCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
+    implements _$HomeStateAllCopyWith<$Res> {
+  __$HomeStateAllCopyWithImpl(
+      _HomeStateAll _value, $Res Function(_HomeStateAll) _then)
+      : super(_value, (v) => _then(v as _HomeStateAll));
+
+  @override
+  _HomeStateAll get _value => super._value as _HomeStateAll;
+
+  @override
+  $Res call({
+    Object? isLoading = freezed,
+    Object? list = freezed,
+    Object? searchCriteria = freezed,
+    Object? isDownloadingData = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_HomeStateAll(
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      list: list == freezed
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<Person>,
+      searchCriteria: searchCriteria == freezed
+          ? _value.searchCriteria
+          : searchCriteria // ignore: cast_nullable_to_non_nullable
+              as String,
+      isDownloadingData: isDownloadingData == freezed
+          ? _value.isDownloadingData
+          : isDownloadingData // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_HomeListContent
-    with DiagnosticableTreeMixin
-    implements _HomeListContent {
-  const _$_HomeListContent({required this.list, this.downloadingData = false});
+class _$_HomeStateAll with DiagnosticableTreeMixin implements _HomeStateAll {
+  const _$_HomeStateAll(
+      {this.isLoading = false,
+      this.list = const [],
+      this.searchCriteria = '',
+      this.isDownloadingData = false,
+      this.error = ''});
 
+  @JsonKey()
+  @override
+  final bool isLoading;
+  @JsonKey()
   @override
   final List<Person> list;
   @JsonKey()
   @override
-  final bool downloadingData;
+  final String searchCriteria;
+  @JsonKey()
+  @override
+  final bool isDownloadingData;
+  @JsonKey()
+  @override
+  final String error;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.content(list: $list, downloadingData: $downloadingData)';
+    return 'HomeState.all(isLoading: $isLoading, list: $list, searchCriteria: $searchCriteria, isDownloadingData: $isDownloadingData, error: $error)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'HomeState.content'))
+      ..add(DiagnosticsProperty('type', 'HomeState.all'))
+      ..add(DiagnosticsProperty('isLoading', isLoading))
       ..add(DiagnosticsProperty('list', list))
-      ..add(DiagnosticsProperty('downloadingData', downloadingData));
+      ..add(DiagnosticsProperty('searchCriteria', searchCriteria))
+      ..add(DiagnosticsProperty('isDownloadingData', isDownloadingData))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HomeListContent &&
+            other is _HomeStateAll &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.list, list) &&
             const DeepCollectionEquality()
-                .equals(other.downloadingData, downloadingData));
+                .equals(other.searchCriteria, searchCriteria) &&
+            const DeepCollectionEquality()
+                .equals(other.isDownloadingData, isDownloadingData) &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(list),
-      const DeepCollectionEquality().hash(downloadingData));
+      const DeepCollectionEquality().hash(searchCriteria),
+      const DeepCollectionEquality().hash(isDownloadingData),
+      const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
-  _$HomeListContentCopyWith<_HomeListContent> get copyWith =>
-      __$HomeListContentCopyWithImpl<_HomeListContent>(this, _$identity);
+  _$HomeStateAllCopyWith<_HomeStateAll> get copyWith =>
+      __$HomeStateAllCopyWithImpl<_HomeStateAll>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function() empty,
-    required TResult Function(List<Person> list, bool downloadingData) content,
-    required TResult Function() error,
+    required TResult Function(bool isLoading, List<Person> list,
+            String searchCriteria, bool isDownloadingData, String error)
+        all,
   }) {
-    return content(list, downloadingData);
+    return all(isLoading, list, searchCriteria, isDownloadingData, error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
+    TResult Function(bool isLoading, List<Person> list, String searchCriteria,
+            bool isDownloadingData, String error)?
+        all,
   }) {
-    return content?.call(list, downloadingData);
+    return all?.call(isLoading, list, searchCriteria, isDownloadingData, error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
+    TResult Function(bool isLoading, List<Person> list, String searchCriteria,
+            bool isDownloadingData, String error)?
+        all,
     required TResult orElse(),
   }) {
-    if (content != null) {
-      return content(list, downloadingData);
+    if (all != null) {
+      return all(isLoading, list, searchCriteria, isDownloadingData, error);
     }
     return orElse();
   }
@@ -778,170 +783,52 @@ class _$_HomeListContent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeListLoading value) loading,
-    required TResult Function(_HomeListEmpty value) empty,
-    required TResult Function(_HomeListContent value) content,
-    required TResult Function(_HomeListError value) error,
+    required TResult Function(_HomeStateAll value) all,
   }) {
-    return content(this);
+    return all(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
+    TResult Function(_HomeStateAll value)? all,
   }) {
-    return content?.call(this);
+    return all?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
+    TResult Function(_HomeStateAll value)? all,
     required TResult orElse(),
   }) {
-    if (content != null) {
-      return content(this);
+    if (all != null) {
+      return all(this);
     }
     return orElse();
   }
 }
 
-abstract class _HomeListContent implements HomeState {
-  const factory _HomeListContent(
-      {required List<Person> list, bool downloadingData}) = _$_HomeListContent;
+abstract class _HomeStateAll implements HomeState {
+  const factory _HomeStateAll(
+      {bool isLoading,
+      List<Person> list,
+      String searchCriteria,
+      bool isDownloadingData,
+      String error}) = _$_HomeStateAll;
 
+  @override
+  bool get isLoading;
+  @override
   List<Person> get list;
-  bool get downloadingData;
+  @override
+  String get searchCriteria;
+  @override
+  bool get isDownloadingData;
+  @override
+  String get error;
+  @override
   @JsonKey(ignore: true)
-  _$HomeListContentCopyWith<_HomeListContent> get copyWith =>
+  _$HomeStateAllCopyWith<_HomeStateAll> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$HomeListErrorCopyWith<$Res> {
-  factory _$HomeListErrorCopyWith(
-          _HomeListError value, $Res Function(_HomeListError) then) =
-      __$HomeListErrorCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$HomeListErrorCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
-    implements _$HomeListErrorCopyWith<$Res> {
-  __$HomeListErrorCopyWithImpl(
-      _HomeListError _value, $Res Function(_HomeListError) _then)
-      : super(_value, (v) => _then(v as _HomeListError));
-
-  @override
-  _HomeListError get _value => super._value as _HomeListError;
-}
-
-/// @nodoc
-
-class _$_HomeListError with DiagnosticableTreeMixin implements _HomeListError {
-  const _$_HomeListError();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState.error()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'HomeState.error'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _HomeListError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function() empty,
-    required TResult Function(List<Person> list, bool downloadingData) content,
-    required TResult Function() error,
-  }) {
-    return error();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
-  }) {
-    return error?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? empty,
-    TResult Function(List<Person> list, bool downloadingData)? content,
-    TResult Function()? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_HomeListLoading value) loading,
-    required TResult Function(_HomeListEmpty value) empty,
-    required TResult Function(_HomeListContent value) content,
-    required TResult Function(_HomeListError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeListLoading value)? loading,
-    TResult Function(_HomeListEmpty value)? empty,
-    TResult Function(_HomeListContent value)? content,
-    TResult Function(_HomeListError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _HomeListError implements HomeState {
-  const factory _HomeListError() = _$_HomeListError;
 }

@@ -13,95 +13,105 @@ class PersonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: Colors.white.withOpacity(.05),
-            width: 5,
-          ),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.white.withOpacity(.05),
+          width: 5,
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(.56),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Stack(
-            children: [
-              Row(
-                children: [
-                  Hero(
-                    tag: 'person-image-${person.name}',
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(4),
-                        bottomLeft: Radius.circular(4),
-                      ),
-                      child: Image.asset(
-                        'assets/images/no_person_image.jpg',
-                        key: const Key('no_person_image'),
-                        width: 110,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(.56),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(4),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(4),
+            highlightColor: Colors.transparent,
+            splashColor: Colors.white.withOpacity(.03),
+            child: Stack(
+              children: [
+                Row(
+                  children: [
+                    Hero(
+                      tag: 'person-image-${person.name}',
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(4),
+                          bottomLeft: Radius.circular(4),
+                        ),
+                        child: Image.asset(
+                          'assets/images/no_person_image.jpg',
+                          key: const Key('no_person_image'),
+                          width: 110,
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 0,
-                        horizontal: 20,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            person.name ?? '--',
-                            style: const TextStyle(
-                              height: 1.1,
-                              fontSize: 22,
-                              color: Color(0xFFCC0996),
-                              fontWeight: FontWeight.w600,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 0,
+                          horizontal: 20,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              person.name ?? '--',
+                              style: const TextStyle(
+                                height: 1.1,
+                                fontSize: 22,
+                                color: Color(0xFFCC0996),
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 12),
-                          _PersonAttribute(
-                            label: context.l10n.homeHeight.toUpperCase(),
-                            value: '${person.height} CM',
-                          ),
-                          const SizedBox(height: 4),
-                          _PersonAttribute(
-                            label: context.l10n.homeMass.toUpperCase(),
-                            value: '${person.mass} KG',
-                          ),
-                          const SizedBox(height: 4),
-                          _PersonAttribute(
-                            label: context.l10n.homeGender.toUpperCase(),
-                            value: person.gender?.toUpperCase() ?? '',
-                          ),
-                        ],
+                            const SizedBox(height: 12),
+                            _PersonAttribute(
+                              label: context.l10n.homeHeight.toUpperCase(),
+                              value: '${person.height} CM',
+                            ),
+                            const SizedBox(height: 4),
+                            _PersonAttribute(
+                              label: context.l10n.homeMass.toUpperCase(),
+                              value: '${person.mass} KG',
+                            ),
+                            const SizedBox(height: 4),
+                            _PersonAttribute(
+                              label: context.l10n.homeGender.toUpperCase(),
+                              value: person.gender?.toUpperCase() ?? '',
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Positioned(
-                right: 15,
-                bottom: 8,
-                child: Icon(
-                  SWIRIcons.planet,
-                  size: 60,
-                  color: const Color(0xFFD70290).withOpacity(.18),
+                  ],
                 ),
-              ),
-            ],
+                Positioned(
+                  right: 15,
+                  bottom: 8,
+                  child: Icon(
+                    SWIRIcons.planet,
+                    size: 60,
+                    color: const Color(0xFFD70290).withOpacity(.18),
+                  ),
+                ),
+              ],
+            ),
+            onTap: () async {
+              await Navigator.of(context).pushNamed(
+                '/details',
+                arguments: person,
+              );
+            },
           ),
         ),
       ),
-      onTap: () async {
-        await Navigator.of(context).pushNamed('/details', arguments: person);
-      },
     );
   }
 }

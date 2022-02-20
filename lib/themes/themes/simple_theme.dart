@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:swir/themes/colors/colors.dart';
-import 'package:swir/layout/layout.dart';
 import 'package:swir/themes/themes/themes.dart';
 
 /// {@template simple_theme}

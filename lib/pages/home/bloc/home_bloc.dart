@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:swir/data/repositories/swapi_repository.dart';
+import 'package:swir/data/repositories/app_repository.dart';
 import 'package:swir/data/models/models.dart';
 
 part 'home_event.dart';
@@ -9,32 +9,40 @@ part 'home_state.dart';
 part 'home_bloc.freezed.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final SWAPIRepository repository;
+  final AppRepository repository;
 
   HomeBloc({
     required this.repository,
-  }) : super(const _HomeListLoading()) {
-    on<HomeListEvent>((event, emit) async {
-      emit(const HomeState.loading());
+  }) : super(const HomeState.all(isLoading: true)) {
+    on<_Started>((event, emit) async {
       try {
         await emit.forEach(repository.watchAllPeople(),
             onData: (List<Person> people) {
-          if (people.isEmpty) {
-            return const HomeState.empty();
-          } else {
-            return HomeState.content(list: people);
-          }
+          return state.copyWith(
+            isLoading: false,
+            list: people,
+            error: '',
+          );
         });
-      } catch (_) {
-        emit(const HomeState.error());
+      } catch (e) {
+        emit(state.copyWith(error: e.toString()));
       }
     });
-    on<DownloadDataPressed>((event, emit) async {
-      if (state is _HomeListContent) {
-        emit((state as _HomeListContent).copyWith(downloadingData: true));
+    on<_DownloadDataPressed>((event, emit) async {
+      emit(state.copyWith(isLoading: true, isDownloadingData: true));
+      try {
         await repository.downloadData();
-        emit((state as _HomeListContent).copyWith(downloadingData: false));
+        emit(state.copyWith(
+          isLoading: false,
+          isDownloadingData: false,
+          error: '',
+        ));
+      } catch (e) {
+        emit(state.copyWith(error: e.toString()));
       }
+    });
+    on<_SearchCriteriaChanged>((event, emit) async {
+      emit(state.copyWith(searchCriteria: event.criteria));
     });
   }
 }

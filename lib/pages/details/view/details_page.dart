@@ -27,9 +27,6 @@ class DetailsPage extends StatelessWidget {
             'assets/images/swir_logo_white.png',
             key: const Key('swir_logo_white'),
           ),
-          centerTitle: true,
-          backgroundColor: Colors.white.withOpacity(.04),
-          elevation: 0,
           automaticallyImplyLeading: false,
           leading: IconButton(
             icon: const Icon(
@@ -142,20 +139,19 @@ class _Details extends StatelessWidget {
                   label: context.l10n.detailsHomeworld.toUpperCase(),
                   value: '${person.homeworld}',
                 ),
+                const SizedBox(height: 8),
                 CollapsablePersonAttribute(
                   label: context.l10n.detailsVehicles.toUpperCase(),
                   noItemsMsg: context.l10n.detailsNoVehicles,
                   items: <String>[
-                    for (var vehicle in person.vehicles ?? [])
-                      vehicle.toString()
+                    for (var vehicle in person.vehicles ?? []) vehicle.name,
                   ],
                 ),
                 CollapsablePersonAttribute(
                   label: context.l10n.detailsStarships.toUpperCase(),
                   noItemsMsg: context.l10n.detailsNoStarships,
                   items: <String>[
-                    for (var starship in person.starships ?? [])
-                      starship.toString()
+                    for (var starship in person.starships ?? []) starship.name,
                   ],
                 ),
                 const SizedBox(height: 30),
@@ -214,6 +210,8 @@ class _CollapsablePersonAttributeState
         Material(
           color: Colors.transparent,
           child: InkWell(
+            highlightColor: Colors.transparent,
+            splashColor: Colors.white.withOpacity(.03),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
               child: Row(
@@ -287,6 +285,8 @@ class _ReportInvaderButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(4),
           child: InkWell(
             borderRadius: BorderRadius.circular(4),
+            highlightColor: Colors.transparent,
+            splashColor: Colors.white.withOpacity(.05),
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 16),
               alignment: Alignment.center,

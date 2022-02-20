@@ -19,17 +19,20 @@ class WSRITheme {
   static ThemeData get dark {
     return ThemeData(
       fontFamily: 'Montserrat',
-      appBarTheme: const AppBarTheme(
-        color: Color(0xFF13B9FF),
+      primaryColor: const Color(0xFFCC0996),
+      appBarTheme: AppBarTheme(
+        color: Colors.white.withOpacity(.04),
+        elevation: 0,
+        centerTitle: true,
       ),
       colorScheme: ColorScheme.fromSwatch(
         brightness: Brightness.dark,
-        accentColor: const Color(0xFF13B9FF),
+        accentColor: const Color(0xFFCC0996),
       ),
       snackBarTheme: const SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
       ),
-      toggleableActiveColor: const Color(0xFF13B9FF),
+      toggleableActiveColor: const Color(0xFFCC0996),
       drawerTheme: DrawerThemeData(
         backgroundColor: Colors.black.withOpacity(.9),
       ),

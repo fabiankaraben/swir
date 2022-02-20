@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:swir/data/repositories/swapi_repository.dart';
+import 'package:swir/data/repositories/app_repository.dart';
 import 'package:swir/l10n/l10n.dart';
 import 'package:swir/pages/home/home.dart';
 import 'package:swir/pages/home/widgets/drawer.dart';
+import 'package:swir/pages/home/widgets/empty_filtered_list_msg.dart';
+import 'package:swir/pages/home/widgets/empty_list_msg.dart';
 import 'package:swir/pages/home/widgets/person_card.dart';
+import 'package:swir/pages/home/widgets/search_input.dart';
 import 'package:swir/pages/home/widgets/settings_dialog.dart';
 import 'package:swir/themes/icons/SWIRIcons.dart';
 import 'package:swir/themes/theme.dart';
-// import 'package:swir/timer/timer.dart';
 
 /// {@template home_page}
 /// The root page of the home UI.
@@ -24,9 +26,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomeBloc(
-        repository: SWAPIRepository(),
+        repository: AppRepository(),
       )..add(
-          const HomeEvent.fetchSummary(),
+          const HomeEvent.started(),
         ),
       child: const HomeView(),
     );
@@ -60,9 +62,6 @@ class HomeView extends StatelessWidget {
             'assets/images/swir_logo_white.png',
             key: const Key('swir_logo_white'),
           ),
-          centerTitle: true,
-          backgroundColor: Colors.white.withOpacity(.04),
-          elevation: 0,
           automaticallyImplyLeading: false,
           leading: const MenuHamburgerIconButton(),
           actions: [
@@ -122,7 +121,7 @@ class _Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    final state = context.select((HomeBloc bloc) => bloc.state);
+    // final state = context.select((HomeBloc bloc) => bloc.state);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -139,57 +138,14 @@ class _Home extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: SearchInput(),
             ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: constraints.maxHeight,
-                  ),
-                  child: Column(
-                    children: const [
-                      _HomeSections(
-                        key: Key('home_sections'),
-                      ),
-                    ],
-                  ),
-                ),
+            const Expanded(
+              child: _HomeSections(
+                key: Key('home_sections'),
               ),
             ),
           ],
         );
       },
-    );
-  }
-}
-
-class SearchInput extends StatelessWidget {
-  const SearchInput({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: Colors.white.withOpacity(.05),
-          width: 5,
-        ),
-      ),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 13),
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(.8),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          children: [
-            Expanded(child: Text(context.l10n.homeSearch.toUpperCase())),
-            const Icon(SWIRIcons.search),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -200,40 +156,53 @@ class _HomeSections extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    final state = context.select((HomeBloc bloc) => bloc.state);
-
-    Widget nextView = Container();
+    final _searchCriteria =
+        context.select((HomeBloc bloc) => bloc.state.searchCriteria);
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        state.when(
-          loading: () {
-            nextView = const Center(child: CircularProgressIndicator());
-          },
-          empty: () {
-            nextView = const Center(child: Text('Emtpy'));
-          },
-          content: (people, _) {
-            nextView = ListView(
-              shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              children: people
-                  .map(
-                    (person) => Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: PersonCard(person: person),
-                    ),
-                  )
-                  .toList(),
-            );
-          },
-          error: () {
-            nextView = Center(
-              child: Text(context.l10n.gralSomethingWentWrong),
-            );
-          },
-        );
-        return nextView;
+        final _people = _searchCriteria.isEmpty
+            ? state.list
+            : state.list.where(
+                (person) => person.name!
+                    .toLowerCase()
+                    .contains(_searchCriteria.toLowerCase()),
+              );
+
+        if (state.error.isNotEmpty) {
+          return Center(
+            child: Text(context.l10n.gralSomethingWentWrong),
+          );
+        } else if (state.isLoading) {
+          return const Center(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFCC0996)),
+            ),
+          );
+        } else if (state.list.isEmpty) {
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: EmptyListMsg(),
+          );
+        } else if (_people.isEmpty) {
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: EmptyFilteredListMsg(),
+          );
+        } else {
+          return ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.symmetric(vertical: 30),
+            children: _people
+                .map(
+                  (person) => Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: PersonCard(person: person),
+                  ),
+                )
+                .toList(),
+          );
+        }
       },
     );
 

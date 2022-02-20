@@ -46,18 +46,27 @@ class DownloadDataButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appStateOnline = context.select((AppBloc bloc) => bloc.state.online);
+    final isDownloading = context.select(
+      (HomeBloc bloc) => bloc.state.isDownloadingData,
+    );
 
     return _DecorativeBorder(
       child: SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-          child: Text(context.l10n.homeDrawerUpdateLocalDB),
+          child: Text(
+            isDownloading
+                ? '${context.l10n.homeDrawerDownloading}...'
+                : context.l10n.homeDrawerUpdateLocalDB,
+          ),
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 20),
           ),
-          onPressed: appStateOnline
+          onPressed: appStateOnline && !isDownloading
               ? () async {
-                  context.read<HomeBloc>().add(const DownloadDataPressed());
+                  context.read<HomeBloc>().add(
+                        const HomeEvent.downloadDataPressed(),
+                      );
                 }
               : null,
         ),
