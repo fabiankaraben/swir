@@ -26,11 +26,11 @@ class HomeDrawer extends StatelessWidget {
           children: <Widget>[
             Text(context.l10n.homeDrawerText1),
             const SizedBox(height: 15),
-            const OnlineModeSwitch(),
+            const _OnlineModeSwitch(),
             const SizedBox(height: 25),
             Text(context.l10n.homeDrawerText2),
             const SizedBox(height: 15),
-            const DownloadDataButton(),
+            const _DownloadDataButton(),
           ],
         ),
       ),
@@ -38,8 +38,8 @@ class HomeDrawer extends StatelessWidget {
   }
 }
 
-class DownloadDataButton extends StatelessWidget {
-  const DownloadDataButton({
+class _DownloadDataButton extends StatelessWidget {
+  const _DownloadDataButton({
     Key? key,
   }) : super(key: key);
 
@@ -92,8 +92,8 @@ class DownloadDataButton extends StatelessWidget {
   }
 }
 
-class OnlineModeSwitch extends StatelessWidget {
-  const OnlineModeSwitch({
+class _OnlineModeSwitch extends StatelessWidget {
+  const _OnlineModeSwitch({
     Key? key,
   }) : super(key: key);
 

@@ -10,16 +10,9 @@ import 'package:swir/pages/home/widgets/person_card.dart';
 import 'package:swir/pages/home/widgets/search_input.dart';
 import 'package:swir/pages/home/widgets/settings_dialog.dart';
 import 'package:swir/themes/icons/SWIRIcons.dart';
-import 'package:swir/themes/theme.dart';
 
-/// {@template home_page}
 /// The root page of the home UI.
-///
-/// Builds the home based on the current [HomeTheme]
-/// from [ThemeBloc].
-/// {@endtemplate}
 class HomePage extends StatelessWidget {
-  /// {@macro home_page}
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -35,11 +28,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-/// {@template home_view}
 /// Displays the content for the [HomePage].
-/// {@endtemplate}
 class _HomeView extends StatelessWidget {
-  /// {@macro home_view}
   const _HomeView({Key? key}) : super(key: key);
 
   @override
@@ -63,7 +53,7 @@ class _HomeView extends StatelessWidget {
             key: const Key('swir_logo_white'),
           ),
           automaticallyImplyLeading: false,
-          leading: const MenuHamburgerIconButton(),
+          leading: const _MenuHamburgerIconButton(),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 12),
@@ -86,17 +76,15 @@ class _HomeView extends StatelessWidget {
             ),
           ],
         ),
-        body: const _Home(
-          key: Key('home_view_home'),
-        ),
+        body: const _Home(key: Key('home_view_home')),
         drawer: const HomeDrawer(),
       ),
     );
   }
 }
 
-class MenuHamburgerIconButton extends StatelessWidget {
-  const MenuHamburgerIconButton({
+class _MenuHamburgerIconButton extends StatelessWidget {
+  const _MenuHamburgerIconButton({
     Key? key,
   }) : super(key: key);
 
@@ -120,9 +108,6 @@ class _Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
-    // final state = context.select((HomeBloc bloc) => bloc.state);
-
     return LayoutBuilder(
       builder: (context, constraints) {
         return Column(
@@ -139,9 +124,7 @@ class _Home extends StatelessWidget {
               child: SearchInput(),
             ),
             const Expanded(
-              child: _HomeSections(
-                key: Key('home_sections'),
-              ),
+              child: _PeopleList(),
             ),
           ],
         );
@@ -150,12 +133,11 @@ class _Home extends StatelessWidget {
   }
 }
 
-class _HomeSections extends StatelessWidget {
-  const _HomeSections({Key? key}) : super(key: key);
+class _PeopleList extends StatelessWidget {
+  const _PeopleList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final theme = context.select((ThemeBloc bloc) => bloc.state.theme);
     final _searchCriteria =
         context.select((HomeBloc bloc) => bloc.state.searchCriteria);
 

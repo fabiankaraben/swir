@@ -1,22 +1,7 @@
 import 'package:flutter/material.dart';
 
-class WSRITheme {
-  static ThemeData get light {
-    return ThemeData(
-      appBarTheme: const AppBarTheme(
-        color: Color(0xFF13B9FF),
-      ),
-      colorScheme: ColorScheme.fromSwatch(
-        accentColor: const Color(0xFF13B9FF),
-      ),
-      snackBarTheme: const SnackBarThemeData(
-        behavior: SnackBarBehavior.floating,
-      ),
-      toggleableActiveColor: const Color(0xFF13B9FF),
-    );
-  }
-
-  static ThemeData get dark {
+class DarkTheme {
+  static ThemeData get data {
     return ThemeData(
       fontFamily: 'Montserrat',
       primaryColor: const Color(0xFFCC0996),

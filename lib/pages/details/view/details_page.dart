@@ -101,30 +101,12 @@ class _Details extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: Hero(
-                      tag: 'person-image-${person.name}',
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
-                        child: Image.asset(
-                          'assets/images/no_person_image.jpg',
-                          key: const Key('no_person_image'),
-                          width: 170,
-                        ),
-                      ),
-                    ),
+                    child: _PersonPhoto(person: person),
                   ),
                   const SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: Text(
-                      person.name,
-                      style: const TextStyle(
-                        height: 1.1,
-                        fontSize: 32,
-                        color: Color(0xFFCC0996),
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
+                    child: _PersonName(person: person),
                   ),
                   const SizedBox(height: 18),
                   _PersonAttribute(
@@ -178,15 +160,9 @@ class _Details extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 30),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: Text(
-                      context.l10n.detailsReportButtonIntro,
-                      style: const TextStyle(
-                        fontSize: 15.5,
-                        height: 1.4,
-                      ),
-                    ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 18),
+                    child: _ReportInvaderButtonIntro(),
                   ),
                   const SizedBox(height: 10),
                   Padding(
@@ -197,6 +173,87 @@ class _Details extends StatelessWidget {
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PersonPhoto extends StatelessWidget {
+  const _PersonPhoto({
+    Key? key,
+    required this.person,
+  }) : super(key: key);
+
+  final Person person;
+
+  @override
+  Widget build(BuildContext context) {
+    return Hero(
+      tag: 'person-image-${person.name}',
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(4),
+        child: Image.asset(
+          'assets/images/no_person_image.jpg',
+          key: const Key('no_person_image'),
+          width: 170,
+        ),
+      ),
+    );
+  }
+}
+
+class _PersonName extends StatelessWidget {
+  const _PersonName({
+    Key? key,
+    required this.person,
+  }) : super(key: key);
+
+  final Person person;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      person.name,
+      style: const TextStyle(
+        height: 1.1,
+        fontSize: 32,
+        color: Color(0xFFCC0996),
+        fontWeight: FontWeight.w800,
+      ),
+    );
+  }
+}
+
+class _PersonAttribute extends StatelessWidget {
+  const _PersonAttribute({
+    Key? key,
+    required this.label,
+    required this.value,
+  }) : super(key: key);
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18),
+      child: RichText(
+        text: TextSpan(
+          style: const TextStyle(
+            fontSize: 15.5,
+            color: Color(0xFF2E5BF2),
+          ),
+          children: [
+            TextSpan(text: '$label '),
+            TextSpan(
+              text: value,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -273,6 +330,23 @@ class _CollapsablePersonAttributeState
               ),
             ),
       ],
+    );
+  }
+}
+
+class _ReportInvaderButtonIntro extends StatelessWidget {
+  const _ReportInvaderButtonIntro({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      context.l10n.detailsReportButtonIntro,
+      style: const TextStyle(
+        fontSize: 15.5,
+        height: 1.4,
+      ),
     );
   }
 }
@@ -374,41 +448,6 @@ class _ReportInvaderButton extends StatelessWidget {
                     },
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _PersonAttribute extends StatelessWidget {
-  const _PersonAttribute({
-    Key? key,
-    required this.label,
-    required this.value,
-  }) : super(key: key);
-
-  final String label;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18),
-      child: RichText(
-        text: TextSpan(
-          style: const TextStyle(
-            fontSize: 15.5,
-            color: Color(0xFF2E5BF2),
-          ),
-          children: [
-            TextSpan(text: '$label '),
-            TextSpan(
-              text: value,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
         ),
       ),
     );
