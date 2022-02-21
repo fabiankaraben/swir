@@ -46,6 +46,8 @@ class _AppState extends State<App> {
 
         return MaterialApp(
           theme: DarkTheme.data,
+          color: Colors.black,
+          title: 'SWIR',
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,

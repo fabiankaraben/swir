@@ -55,8 +55,9 @@ class LocalStorageHiveProvider extends LocalStorageService {
 
   ///
   @override
-  Future<Map<String, dynamic>> getPlanet(int id) async {
-    return Map<String, dynamic>.from(await _planetsBox.get(id));
+  Future<Map<String, dynamic>?> getPlanet(int id) async {
+    final value = _planetsBox.get(id);
+    return value != null ? Map<String, dynamic>.from(value) : null;
   }
 
   ///
@@ -73,8 +74,9 @@ class LocalStorageHiveProvider extends LocalStorageService {
 
   ///
   @override
-  Future<Map<String, dynamic>> getVehicle(int id) async {
-    return Map<String, dynamic>.from(await _vehiclesBox.get(id));
+  Future<Map<String, dynamic>?> getVehicle(int id) async {
+    final value = _vehiclesBox.get(id);
+    return value != null ? Map<String, dynamic>.from(value) : null;
   }
 
   ///
@@ -91,7 +93,8 @@ class LocalStorageHiveProvider extends LocalStorageService {
 
   ///
   @override
-  Future<Map<String, dynamic>> getStarship(int id) async {
-    return Map<String, dynamic>.from(await _starshipsBox.get(id));
+  Future<Map<String, dynamic>?> getStarship(int id) async {
+    final value = _starshipsBox.get(id);
+    return value != null ? Map<String, dynamic>.from(value) : null;
   }
 }

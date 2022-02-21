@@ -11,6 +11,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -31,10 +32,21 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
 /// Bootstrap is responsible for any common setup and calls
 /// [runApp] with the widget returned by [builder] in an error zone.
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  HttpOverrides.global = MyHttpOverrides();
 
   if (kIsWeb) {
     await Hive.openBox('people');
@@ -50,6 +62,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     await Hive.openBox('vehicles', path: appDocPath);
     await Hive.openBox('planets', path: appDocPath);
   }
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Color(0xFFCC0996), // status bar color
+    ),
+  );
 
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);

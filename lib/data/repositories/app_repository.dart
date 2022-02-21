@@ -19,9 +19,11 @@ class AppRepository {
         for (String vehicleUrl in data['vehicles']) {
           final vehicletId = int.parse(vehicleUrl.split('/')[5]);
           final vehicleData = await localStorageService.getVehicle(vehicletId);
-          vehicles.add(
-            Vehicle.fromJson(vehicleData),
-          );
+          if (vehicleData != null) {
+            vehicles.add(
+              Vehicle.fromJson(vehicleData),
+            );
+          }
         }
 
         List<Starship> starships = [];
@@ -30,9 +32,11 @@ class AppRepository {
           final starshipData = await localStorageService.getStarship(
             starshipId,
           );
-          starships.add(
-            Starship.fromJson(starshipData),
-          );
+          if (starshipData != null) {
+            starships.add(
+              Starship.fromJson(starshipData),
+            );
+          }
         }
 
         final personId = int.parse((data['url'] as String).split('/')[5]);
@@ -40,7 +44,7 @@ class AppRepository {
 
         people.add(
           Person.fromJson(data).copyWith(
-            homeworld: planetData['name'],
+            homeworld: planetData != null ? planetData['name'] : '',
             vehicles: vehicles,
             starships: starships,
           ),

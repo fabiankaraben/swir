@@ -19,7 +19,7 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
     while (pageData['next'] != null) {
       pageNum++;
 
-      Map<String, dynamic> pageData = json.decode(
+      pageData = json.decode(
         await _httpGet(what: 'people', pageNum: pageNum),
       );
 
