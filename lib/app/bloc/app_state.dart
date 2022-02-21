@@ -2,8 +2,8 @@ part of 'app_bloc.dart';
 
 @freezed
 class AppState with _$AppState {
-  const factory AppState.initial({
-    @Default(false) bool online,
+  const factory AppState.all({
+    @Default(false) bool isOnline,
     @Default('en') String lang,
-  }) = _Initial;
+  }) = _AppStateAll;
 }

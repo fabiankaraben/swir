@@ -1,7 +1,9 @@
 import 'package:swir/data/models/models.dart';
 import 'package:swir/data/providers/local_storage_hive_provider.dart';
+import 'package:swir/data/providers/report_typicode_provider.dart';
 import 'package:swir/data/providers/star_wars_data_swapi_provider.dart';
 import 'package:swir/data/services/local_storage_service.dart';
+import 'package:swir/data/services/report_service.dart';
 import 'package:swir/data/services/star_wars_data_service.dart';
 
 class AppRepository {
@@ -33,6 +35,9 @@ class AppRepository {
           );
         }
 
+        final personId = int.parse((data['url'] as String).split('/')[5]);
+        data['id'] = personId;
+
         people.add(
           Person.fromJson(data).copyWith(
             homeworld: planetData['name'],
@@ -43,29 +48,8 @@ class AppRepository {
       }
 
       return people;
-
-      // await Future.delayed(const Duration(seconds: 3));
-      // return values.map((data) {
-      //   final planetId = int.parse((data['homeworld'] as String).split('/')[5]);
-      //   final planet = await localStorageService.getPlanet(planetId);
-      //   return Person.fromJson(data).copyWith(
-      //       homeworld: planet['name'],
-      //       // starships: [
-      //       //   const Starship(name: 'Name', model: 'model', starshipClass: 'asdf'),
-      //       // ],
-      //       );
-      // }).toList();
     });
   }
-
-  // Future<List<Person>> getAllPeople() async {
-  //   SWAPIService swapiService = SWAPIHiveProvider();
-  //   return ((await swapiService.readAllPeople()) as List).map((value) {
-  //     return Person.fromJson(value).copyWith(starships: [
-  //       const Starship(name: 'Name', model: 'model', starshipClass: 'asdf'),
-  //     ]);
-  //   }).toList();
-  // }
 
   Future<void> downloadData() async {
     StarWarsDataService starWarsDataService = StarWarsDataSWAPIProvider();
@@ -98,5 +82,10 @@ class AppRepository {
       final id = int.parse((data['url'] as String).split('/')[5]);
       await localStorageService.addStarship(id, data);
     }
+  }
+
+  Future<void> sendInvaderReport(Person person) async {
+    ReportService reportService = PreportTypicodeProvider();
+    await reportService.sendReport(person);
   }
 }

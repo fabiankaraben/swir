@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:swir/themes/colors/colors.dart';
 import 'package:swir/themes/typography/typography.dart';
 
@@ -118,8 +118,9 @@ class HomeTextStyle {
     fontWeight: HomeFontWeight.regular,
   );
 
-  static final _bodyTextStyle = GoogleFonts.roboto(
-    color: HomeColors.black,
-    fontWeight: HomeFontWeight.regular,
-  );
+  static const _bodyTextStyle = TextStyle();
+  // static final _bodyTextStyle = GoogleFonts.roboto(
+  //   color: HomeColors.black,
+  //   fontWeight: HomeFontWeight.regular,
+  // );
 }

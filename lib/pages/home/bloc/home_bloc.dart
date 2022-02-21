@@ -13,7 +13,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   HomeBloc({
     required this.repository,
-  }) : super(const HomeState.all(isLoading: true)) {
+  }) : super(const HomeState.all()) {
     on<_Started>((event, emit) async {
       try {
         await emit.forEach(repository.watchAllPeople(),
@@ -25,7 +25,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           );
         });
       } catch (e) {
-        emit(state.copyWith(error: e.toString()));
+        emit(state.copyWith(isLoading: false, error: e.toString()));
       }
     });
     on<_DownloadDataPressed>((event, emit) async {
@@ -38,7 +38,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           error: '',
         ));
       } catch (e) {
-        emit(state.copyWith(error: e.toString()));
+        emit(state.copyWith(
+          isLoading: false,
+          isDownloadingData: false,
+          error: e.toString(),
+        ));
       }
     });
     on<_SearchCriteriaChanged>((event, emit) async {

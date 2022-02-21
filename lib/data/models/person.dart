@@ -8,23 +8,17 @@ part 'person.g.dart';
 @freezed
 class Person with _$Person {
   const factory Person({
-    String? name,
-    String? height,
-    String? mass,
-    String? gender,
-    @JsonKey(name: 'hair_color') String? hairColor,
-    @JsonKey(name: 'skin_color') String? skinColor,
-    @JsonKey(name: 'eye_color') String? eyeColor,
-    String? homeworld,
+    required int id,
+    required String name,
+    required String height,
+    required String mass,
+    required String gender,
+    @JsonKey(name: 'hair_color') required String hairColor,
+    @JsonKey(name: 'skin_color') required String skinColor,
+    @JsonKey(name: 'eye_color') required String eyeColor,
+    @JsonKey(ignore: true) String? homeworld,
     @JsonKey(ignore: true) List<Starship>? starships,
     @JsonKey(ignore: true) List<Vehicle>? vehicles,
-
-    // @JsonKey(name: 'birth_year') String? birthYear,
-    // List<String>? films,
-    // List<String>? species,
-    // String? url,
-    // String? created,
-    // String? edited,
   }) = _Person;
 
   factory Person.fromJson(Map<String, dynamic> json) => _$PersonFromJson(json);

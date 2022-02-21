@@ -5,5 +5,5 @@ class AppEvent with _$AppEvent {
   const factory AppEvent.started() = _Started;
   const factory AppEvent.connected() = _Connected;
   const factory AppEvent.disconnected() = _Disconnected;
-  const factory AppEvent.changeLanguage(String lang) = _ChangeLanguage;
+  const factory AppEvent.languageChanged(String lang) = _LanguageChanged;
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swir/app/bloc/app_bloc.dart';
 import 'package:swir/l10n/l10n.dart';
+import 'package:swir/themes/icons/SWIRIcons.dart';
 
 class SettingsDialog extends StatefulWidget {
   const SettingsDialog({
@@ -30,7 +31,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
             const SizedBox(height: 15),
             DropdownButton<String>(
               value: _langValue,
-              icon: const Icon(Icons.arrow_drop_down),
+              icon: const Icon(SWIRIcons.arrow_drop_down),
               onChanged: (String? newValue) {
                 setState(() => _langValue = newValue!);
               },
@@ -54,7 +55,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
           ),
           onPressed: () async {
-            context.read<AppBloc>().add(AppEvent.changeLanguage(_langValue!));
+            context.read<AppBloc>().add(AppEvent.languageChanged(_langValue!));
             Navigator.of(context).pop();
           },
         ),

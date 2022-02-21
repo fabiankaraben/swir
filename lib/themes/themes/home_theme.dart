@@ -1,10 +1,10 @@
-import 'package:equatable/equatable.dart';
+// import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 /// {@template home_theme}
 /// Template for creating custom home UI.
 /// {@endtemplate}
-abstract class HomeTheme extends Equatable {
+abstract class HomeTheme {
   /// {@macro home_theme}
   const HomeTheme();
 

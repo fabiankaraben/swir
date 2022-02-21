@@ -1,6 +1,5 @@
 {
     "@@locale": "es",
-    "gralSomethingWentWrong": "¡Algo salió mal!",
     "gralSave": "Guardar",
     "homeEmptyListHeader": "Tu lista está vacía.",
     "homeEmptyListDescription": "Puedes descargar la lista completa de posibles invasores:",
@@ -15,6 +14,8 @@
     "homeDrawerText2": "Puedes actualizar tu base de datos local si el modo de conexión es ONLINE:",
     "homeDrawerUpdateLocalDB": "Actualizar base de datos local",
     "homeDrawerDownloading": "Descargando",
+    "homeDrawerDownloadingSuccessMsg": "¡Datos descargados correctamente!",
+    "homeDrawerDownloadingErrorMsg": "Los datos no fueron descargados. Por favor reintenta más tarde.",
     "homeHeight": "Altura:",
     "homeMass": "Peso:",
     "homeGender": "Sexo:",
@@ -35,5 +36,9 @@
     "detailsReportButtonText": "Reportar invasor",
     "detailsConfirmReport": "Confirmar reporte",
     "detailsConfirmReportQuestion": "¿Confirmas que deseas reportar a",
-    "detailsReport": "Reportar"
+    "detailsReport": "Enviar reportar",
+    "detailsReportSending": "Enviando...",
+    "detailsReportSuccessMsg": "¡Reporte enviado exitosamente!",
+    "detailsReportErrorMsg": "El reporte no se pudo enviar. Por favor reintenta más tarde.",
+    "detailsReportRequired": "Se requiere modo de conexión ONLINE para enviar un reporte."   
 }

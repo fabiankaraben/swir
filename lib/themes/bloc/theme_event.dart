@@ -2,7 +2,7 @@
 
 part of 'theme_bloc.dart';
 
-abstract class ThemeEvent extends Equatable {
+abstract class ThemeEvent {
   const ThemeEvent();
 }
 
@@ -12,6 +12,6 @@ class ThemeChanged extends ThemeEvent {
   /// The index of the changed theme in [ThemeBloc.themes].
   final int themeIndex;
 
-  @override
-  List<Object> get props => [themeIndex];
+  // @override
+  // List<Object> get props => [themeIndex];
 }

@@ -22,14 +22,9 @@ Vehicle _$VehicleFromJson(Map<String, dynamic> json) {
 class _$VehicleTearOff {
   const _$VehicleTearOff();
 
-  _Vehicle call(
-      {String? name,
-      String? model,
-      @JsonKey(name: 'vehicle_class') String? vehicleClass}) {
+  _Vehicle call({required String name}) {
     return _Vehicle(
       name: name,
-      model: model,
-      vehicleClass: vehicleClass,
     );
   }
 
@@ -43,10 +38,7 @@ const $Vehicle = _$VehicleTearOff();
 
 /// @nodoc
 mixin _$Vehicle {
-  String? get name => throw _privateConstructorUsedError;
-  String? get model => throw _privateConstructorUsedError;
-  @JsonKey(name: 'vehicle_class')
-  String? get vehicleClass => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,10 +49,7 @@ mixin _$Vehicle {
 abstract class $VehicleCopyWith<$Res> {
   factory $VehicleCopyWith(Vehicle value, $Res Function(Vehicle) then) =
       _$VehicleCopyWithImpl<$Res>;
-  $Res call(
-      {String? name,
-      String? model,
-      @JsonKey(name: 'vehicle_class') String? vehicleClass});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -74,22 +63,12 @@ class _$VehicleCopyWithImpl<$Res> implements $VehicleCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
-    Object? model = freezed,
-    Object? vehicleClass = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      model: model == freezed
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as String?,
-      vehicleClass: vehicleClass == freezed
-          ? _value.vehicleClass
-          : vehicleClass // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -99,10 +78,7 @@ abstract class _$VehicleCopyWith<$Res> implements $VehicleCopyWith<$Res> {
   factory _$VehicleCopyWith(_Vehicle value, $Res Function(_Vehicle) then) =
       __$VehicleCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String? name,
-      String? model,
-      @JsonKey(name: 'vehicle_class') String? vehicleClass});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -117,22 +93,12 @@ class __$VehicleCopyWithImpl<$Res> extends _$VehicleCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? model = freezed,
-    Object? vehicleClass = freezed,
   }) {
     return _then(_Vehicle(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      model: model == freezed
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as String?,
-      vehicleClass: vehicleClass == freezed
-          ? _value.vehicleClass
-          : vehicleClass // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -140,25 +106,17 @@ class __$VehicleCopyWithImpl<$Res> extends _$VehicleCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Vehicle with DiagnosticableTreeMixin implements _Vehicle {
-  const _$_Vehicle(
-      {this.name,
-      this.model,
-      @JsonKey(name: 'vehicle_class') this.vehicleClass});
+  const _$_Vehicle({required this.name});
 
   factory _$_Vehicle.fromJson(Map<String, dynamic> json) =>
       _$$_VehicleFromJson(json);
 
   @override
-  final String? name;
-  @override
-  final String? model;
-  @override
-  @JsonKey(name: 'vehicle_class')
-  final String? vehicleClass;
+  final String name;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Vehicle(name: $name, model: $model, vehicleClass: $vehicleClass)';
+    return 'Vehicle(name: $name)';
   }
 
   @override
@@ -166,9 +124,7 @@ class _$_Vehicle with DiagnosticableTreeMixin implements _Vehicle {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Vehicle'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('model', model))
-      ..add(DiagnosticsProperty('vehicleClass', vehicleClass));
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
@@ -176,18 +132,12 @@ class _$_Vehicle with DiagnosticableTreeMixin implements _Vehicle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Vehicle &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.model, model) &&
-            const DeepCollectionEquality()
-                .equals(other.vehicleClass, vehicleClass));
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(model),
-      const DeepCollectionEquality().hash(vehicleClass));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -201,20 +151,12 @@ class _$_Vehicle with DiagnosticableTreeMixin implements _Vehicle {
 }
 
 abstract class _Vehicle implements Vehicle {
-  const factory _Vehicle(
-      {String? name,
-      String? model,
-      @JsonKey(name: 'vehicle_class') String? vehicleClass}) = _$_Vehicle;
+  const factory _Vehicle({required String name}) = _$_Vehicle;
 
   factory _Vehicle.fromJson(Map<String, dynamic> json) = _$_Vehicle.fromJson;
 
   @override
-  String? get name;
-  @override
-  String? get model;
-  @override
-  @JsonKey(name: 'vehicle_class')
-  String? get vehicleClass;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$VehicleCopyWith<_Vehicle> get copyWith =>

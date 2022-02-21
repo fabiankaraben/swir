@@ -1,6 +1,5 @@
 {
     "@@locale": "en",
-    "gralSomethingWentWrong": "Something went wrong!",
     "gralSave": "Save",
     "homeEmptyListHeader": "Your list is empty.",
     "homeEmptyListDescription": "You can download the complete list of possible invaders:",
@@ -15,6 +14,8 @@
     "homeDrawerText2": "You can update your local database if the connection mode is ONLINE:",
     "homeDrawerUpdateLocalDB": "Update local database",
     "homeDrawerDownloading": "Downloading",
+    "homeDrawerDownloadingSuccessMsg": "Data downloaded successfully!",
+    "homeDrawerDownloadingErrorMsg": "The data was not downloaded. Please try again later.",
     "homeHeight": "Height:",
     "homeMass": "Mass:",
     "homeGender": "Gender:",
@@ -35,5 +36,9 @@
     "detailsReportButtonText": "Report invader",
     "detailsConfirmReport": "Confirm report",
     "detailsConfirmReportQuestion": "Are you sure you want to report ",
-    "detailsReport": "Report"
+    "detailsReport": "Send report",
+    "detailsReportSending": "Sending...",
+    "detailsReportSuccessMsg": "Report sent successfully!",
+    "detailsReportErrorMsg": "The report was not sent. Please try again later.",
+    "detailsReportRequired": "ONLINE connection mode is required to send a report."
 }

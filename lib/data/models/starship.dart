@@ -7,9 +7,7 @@ part 'starship.g.dart';
 @freezed
 class Starship with _$Starship {
   const factory Starship({
-    String? name,
-    String? model,
-    @JsonKey(name: 'starship_class') String? starshipClass,
+    required String name,
   }) = _Starship;
 
   factory Starship.fromJson(Map<String, dynamic> json) =>

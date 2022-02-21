@@ -30,7 +30,7 @@ class InvasorReportDialog extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pop(true);
           },
         ),
       ],

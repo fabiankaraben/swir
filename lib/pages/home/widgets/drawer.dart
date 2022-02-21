@@ -45,30 +45,47 @@ class DownloadDataButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appStateOnline = context.select((AppBloc bloc) => bloc.state.online);
+    final isOnline = context.select((AppBloc bloc) => bloc.state.isOnline);
     final isDownloading = context.select(
       (HomeBloc bloc) => bloc.state.isDownloadingData,
     );
 
-    return _DecorativeBorder(
-      child: SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-          child: Text(
-            isDownloading
-                ? '${context.l10n.homeDrawerDownloading}...'
-                : context.l10n.homeDrawerUpdateLocalDB,
+    return BlocListener<HomeBloc, HomeState>(
+      listenWhen: (previous, current) =>
+          previous.isDownloadingData == true &&
+          current.isDownloadingData == false,
+      listener: (context, state) {
+        if (Scaffold.of(context).isDrawerOpen) {
+          Navigator.of(context).pop();
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: state.error.isEmpty
+                ? Text(context.l10n.homeDrawerDownloadingSuccessMsg)
+                : Text(context.l10n.homeDrawerDownloadingErrorMsg),
           ),
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 20),
+        );
+      },
+      child: _DecorativeBorder(
+        child: SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+            child: Text(
+              isDownloading
+                  ? '${context.l10n.homeDrawerDownloading}...'
+                  : context.l10n.homeDrawerUpdateLocalDB,
+            ),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+            ),
+            onPressed: isOnline && !isDownloading
+                ? () async {
+                    context.read<HomeBloc>().add(
+                          const HomeEvent.downloadDataPressed(),
+                        );
+                  }
+                : null,
           ),
-          onPressed: appStateOnline && !isDownloading
-              ? () async {
-                  context.read<HomeBloc>().add(
-                        const HomeEvent.downloadDataPressed(),
-                      );
-                }
-              : null,
         ),
       ),
     );
@@ -82,7 +99,7 @@ class OnlineModeSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.select((AppBloc bloc) => bloc.state.online);
+    final isOnline = context.select((AppBloc bloc) => bloc.state.isOnline);
 
     return _DecorativeBorder(
       padding: const EdgeInsets.all(0),
@@ -92,17 +109,17 @@ class OnlineModeSwitch extends StatelessWidget {
             children: [
               TextSpan(text: '${context.l10n.homeDrawerMode} '),
               TextSpan(
-                text: state ? 'ONLINE' : 'OFFLINE',
+                text: isOnline ? 'ONLINE' : 'OFFLINE',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: state ? Colors.green : null,
+                  color: isOnline ? Colors.green : null,
                 ),
               ),
             ],
           ),
         ),
         contentPadding: const EdgeInsets.fromLTRB(20, 3, 10, 3),
-        value: state,
+        value: isOnline,
         onChanged: (value) {
           var appBloc = context.read<AppBloc>();
           appBloc.add(

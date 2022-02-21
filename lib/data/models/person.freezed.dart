@@ -23,17 +23,19 @@ class _$PersonTearOff {
   const _$PersonTearOff();
 
   _Person call(
-      {String? name,
-      String? height,
-      String? mass,
-      String? gender,
-      @JsonKey(name: 'hair_color') String? hairColor,
-      @JsonKey(name: 'skin_color') String? skinColor,
-      @JsonKey(name: 'eye_color') String? eyeColor,
-      String? homeworld,
+      {required int id,
+      required String name,
+      required String height,
+      required String mass,
+      required String gender,
+      @JsonKey(name: 'hair_color') required String hairColor,
+      @JsonKey(name: 'skin_color') required String skinColor,
+      @JsonKey(name: 'eye_color') required String eyeColor,
+      @JsonKey(ignore: true) String? homeworld,
       @JsonKey(ignore: true) List<Starship>? starships,
       @JsonKey(ignore: true) List<Vehicle>? vehicles}) {
     return _Person(
+      id: id,
       name: name,
       height: height,
       mass: mass,
@@ -57,16 +59,18 @@ const $Person = _$PersonTearOff();
 
 /// @nodoc
 mixin _$Person {
-  String? get name => throw _privateConstructorUsedError;
-  String? get height => throw _privateConstructorUsedError;
-  String? get mass => throw _privateConstructorUsedError;
-  String? get gender => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get height => throw _privateConstructorUsedError;
+  String get mass => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
   @JsonKey(name: 'hair_color')
-  String? get hairColor => throw _privateConstructorUsedError;
+  String get hairColor => throw _privateConstructorUsedError;
   @JsonKey(name: 'skin_color')
-  String? get skinColor => throw _privateConstructorUsedError;
+  String get skinColor => throw _privateConstructorUsedError;
   @JsonKey(name: 'eye_color')
-  String? get eyeColor => throw _privateConstructorUsedError;
+  String get eyeColor => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   String? get homeworld => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   List<Starship>? get starships => throw _privateConstructorUsedError;
@@ -83,14 +87,15 @@ abstract class $PersonCopyWith<$Res> {
   factory $PersonCopyWith(Person value, $Res Function(Person) then) =
       _$PersonCopyWithImpl<$Res>;
   $Res call(
-      {String? name,
-      String? height,
-      String? mass,
-      String? gender,
-      @JsonKey(name: 'hair_color') String? hairColor,
-      @JsonKey(name: 'skin_color') String? skinColor,
-      @JsonKey(name: 'eye_color') String? eyeColor,
-      String? homeworld,
+      {int id,
+      String name,
+      String height,
+      String mass,
+      String gender,
+      @JsonKey(name: 'hair_color') String hairColor,
+      @JsonKey(name: 'skin_color') String skinColor,
+      @JsonKey(name: 'eye_color') String eyeColor,
+      @JsonKey(ignore: true) String? homeworld,
       @JsonKey(ignore: true) List<Starship>? starships,
       @JsonKey(ignore: true) List<Vehicle>? vehicles});
 }
@@ -105,6 +110,7 @@ class _$PersonCopyWithImpl<$Res> implements $PersonCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? height = freezed,
     Object? mass = freezed,
@@ -117,34 +123,38 @@ class _$PersonCopyWithImpl<$Res> implements $PersonCopyWith<$Res> {
     Object? vehicles = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       height: height == freezed
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       mass: mass == freezed
           ? _value.mass
           : mass // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       hairColor: hairColor == freezed
           ? _value.hairColor
           : hairColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       skinColor: skinColor == freezed
           ? _value.skinColor
           : skinColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       eyeColor: eyeColor == freezed
           ? _value.eyeColor
           : eyeColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       homeworld: homeworld == freezed
           ? _value.homeworld
           : homeworld // ignore: cast_nullable_to_non_nullable
@@ -167,14 +177,15 @@ abstract class _$PersonCopyWith<$Res> implements $PersonCopyWith<$Res> {
       __$PersonCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? name,
-      String? height,
-      String? mass,
-      String? gender,
-      @JsonKey(name: 'hair_color') String? hairColor,
-      @JsonKey(name: 'skin_color') String? skinColor,
-      @JsonKey(name: 'eye_color') String? eyeColor,
-      String? homeworld,
+      {int id,
+      String name,
+      String height,
+      String mass,
+      String gender,
+      @JsonKey(name: 'hair_color') String hairColor,
+      @JsonKey(name: 'skin_color') String skinColor,
+      @JsonKey(name: 'eye_color') String eyeColor,
+      @JsonKey(ignore: true) String? homeworld,
       @JsonKey(ignore: true) List<Starship>? starships,
       @JsonKey(ignore: true) List<Vehicle>? vehicles});
 }
@@ -190,6 +201,7 @@ class __$PersonCopyWithImpl<$Res> extends _$PersonCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
     Object? height = freezed,
     Object? mass = freezed,
@@ -202,34 +214,38 @@ class __$PersonCopyWithImpl<$Res> extends _$PersonCopyWithImpl<$Res>
     Object? vehicles = freezed,
   }) {
     return _then(_Person(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       height: height == freezed
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       mass: mass == freezed
           ? _value.mass
           : mass // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       hairColor: hairColor == freezed
           ? _value.hairColor
           : hairColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       skinColor: skinColor == freezed
           ? _value.skinColor
           : skinColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       eyeColor: eyeColor == freezed
           ? _value.eyeColor
           : eyeColor // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       homeworld: homeworld == freezed
           ? _value.homeworld
           : homeworld // ignore: cast_nullable_to_non_nullable
@@ -250,14 +266,15 @@ class __$PersonCopyWithImpl<$Res> extends _$PersonCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Person with DiagnosticableTreeMixin implements _Person {
   const _$_Person(
-      {this.name,
-      this.height,
-      this.mass,
-      this.gender,
-      @JsonKey(name: 'hair_color') this.hairColor,
-      @JsonKey(name: 'skin_color') this.skinColor,
-      @JsonKey(name: 'eye_color') this.eyeColor,
-      this.homeworld,
+      {required this.id,
+      required this.name,
+      required this.height,
+      required this.mass,
+      required this.gender,
+      @JsonKey(name: 'hair_color') required this.hairColor,
+      @JsonKey(name: 'skin_color') required this.skinColor,
+      @JsonKey(name: 'eye_color') required this.eyeColor,
+      @JsonKey(ignore: true) this.homeworld,
       @JsonKey(ignore: true) this.starships,
       @JsonKey(ignore: true) this.vehicles});
 
@@ -265,23 +282,26 @@ class _$_Person with DiagnosticableTreeMixin implements _Person {
       _$$_PersonFromJson(json);
 
   @override
-  final String? name;
+  final int id;
   @override
-  final String? height;
+  final String name;
   @override
-  final String? mass;
+  final String height;
   @override
-  final String? gender;
+  final String mass;
+  @override
+  final String gender;
   @override
   @JsonKey(name: 'hair_color')
-  final String? hairColor;
+  final String hairColor;
   @override
   @JsonKey(name: 'skin_color')
-  final String? skinColor;
+  final String skinColor;
   @override
   @JsonKey(name: 'eye_color')
-  final String? eyeColor;
+  final String eyeColor;
   @override
+  @JsonKey(ignore: true)
   final String? homeworld;
   @override
   @JsonKey(ignore: true)
@@ -292,7 +312,7 @@ class _$_Person with DiagnosticableTreeMixin implements _Person {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Person(name: $name, height: $height, mass: $mass, gender: $gender, hairColor: $hairColor, skinColor: $skinColor, eyeColor: $eyeColor, homeworld: $homeworld, starships: $starships, vehicles: $vehicles)';
+    return 'Person(id: $id, name: $name, height: $height, mass: $mass, gender: $gender, hairColor: $hairColor, skinColor: $skinColor, eyeColor: $eyeColor, homeworld: $homeworld, starships: $starships, vehicles: $vehicles)';
   }
 
   @override
@@ -300,6 +320,7 @@ class _$_Person with DiagnosticableTreeMixin implements _Person {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Person'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('height', height))
       ..add(DiagnosticsProperty('mass', mass))
@@ -317,6 +338,7 @@ class _$_Person with DiagnosticableTreeMixin implements _Person {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Person &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.height, height) &&
             const DeepCollectionEquality().equals(other.mass, mass) &&
@@ -332,6 +354,7 @@ class _$_Person with DiagnosticableTreeMixin implements _Person {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(height),
       const DeepCollectionEquality().hash(mass),
@@ -356,37 +379,41 @@ class _$_Person with DiagnosticableTreeMixin implements _Person {
 
 abstract class _Person implements Person {
   const factory _Person(
-      {String? name,
-      String? height,
-      String? mass,
-      String? gender,
-      @JsonKey(name: 'hair_color') String? hairColor,
-      @JsonKey(name: 'skin_color') String? skinColor,
-      @JsonKey(name: 'eye_color') String? eyeColor,
-      String? homeworld,
+      {required int id,
+      required String name,
+      required String height,
+      required String mass,
+      required String gender,
+      @JsonKey(name: 'hair_color') required String hairColor,
+      @JsonKey(name: 'skin_color') required String skinColor,
+      @JsonKey(name: 'eye_color') required String eyeColor,
+      @JsonKey(ignore: true) String? homeworld,
       @JsonKey(ignore: true) List<Starship>? starships,
       @JsonKey(ignore: true) List<Vehicle>? vehicles}) = _$_Person;
 
   factory _Person.fromJson(Map<String, dynamic> json) = _$_Person.fromJson;
 
   @override
-  String? get name;
+  int get id;
   @override
-  String? get height;
+  String get name;
   @override
-  String? get mass;
+  String get height;
   @override
-  String? get gender;
+  String get mass;
+  @override
+  String get gender;
   @override
   @JsonKey(name: 'hair_color')
-  String? get hairColor;
+  String get hairColor;
   @override
   @JsonKey(name: 'skin_color')
-  String? get skinColor;
+  String get skinColor;
   @override
   @JsonKey(name: 'eye_color')
-  String? get eyeColor;
+  String get eyeColor;
   @override
+  @JsonKey(ignore: true)
   String? get homeworld;
   @override
   @JsonKey(ignore: true)

@@ -7,6 +7,10 @@ class SWIRIcons {
 
   static const String _fontFamily = 'SWIRIcons';
 
+  static const IconData arrow_drop_down =
+      IconData(0xe905, fontFamily: _fontFamily);
+  static const IconData arrow_drop_up =
+      IconData(0xe906, fontFamily: _fontFamily);
   static const IconData back = IconData(0xe900, fontFamily: _fontFamily);
   static const IconData menu_hamburger =
       IconData(0xe901, fontFamily: _fontFamily);

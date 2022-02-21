@@ -22,14 +22,9 @@ Starship _$StarshipFromJson(Map<String, dynamic> json) {
 class _$StarshipTearOff {
   const _$StarshipTearOff();
 
-  _Starship call(
-      {String? name,
-      String? model,
-      @JsonKey(name: 'starship_class') String? starshipClass}) {
+  _Starship call({required String name}) {
     return _Starship(
       name: name,
-      model: model,
-      starshipClass: starshipClass,
     );
   }
 
@@ -43,10 +38,7 @@ const $Starship = _$StarshipTearOff();
 
 /// @nodoc
 mixin _$Starship {
-  String? get name => throw _privateConstructorUsedError;
-  String? get model => throw _privateConstructorUsedError;
-  @JsonKey(name: 'starship_class')
-  String? get starshipClass => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,10 +50,7 @@ mixin _$Starship {
 abstract class $StarshipCopyWith<$Res> {
   factory $StarshipCopyWith(Starship value, $Res Function(Starship) then) =
       _$StarshipCopyWithImpl<$Res>;
-  $Res call(
-      {String? name,
-      String? model,
-      @JsonKey(name: 'starship_class') String? starshipClass});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -75,22 +64,12 @@ class _$StarshipCopyWithImpl<$Res> implements $StarshipCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
-    Object? model = freezed,
-    Object? starshipClass = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      model: model == freezed
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as String?,
-      starshipClass: starshipClass == freezed
-          ? _value.starshipClass
-          : starshipClass // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -100,10 +79,7 @@ abstract class _$StarshipCopyWith<$Res> implements $StarshipCopyWith<$Res> {
   factory _$StarshipCopyWith(_Starship value, $Res Function(_Starship) then) =
       __$StarshipCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String? name,
-      String? model,
-      @JsonKey(name: 'starship_class') String? starshipClass});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -118,22 +94,12 @@ class __$StarshipCopyWithImpl<$Res> extends _$StarshipCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
-    Object? model = freezed,
-    Object? starshipClass = freezed,
   }) {
     return _then(_Starship(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      model: model == freezed
-          ? _value.model
-          : model // ignore: cast_nullable_to_non_nullable
-              as String?,
-      starshipClass: starshipClass == freezed
-          ? _value.starshipClass
-          : starshipClass // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -141,25 +107,17 @@ class __$StarshipCopyWithImpl<$Res> extends _$StarshipCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Starship with DiagnosticableTreeMixin implements _Starship {
-  const _$_Starship(
-      {this.name,
-      this.model,
-      @JsonKey(name: 'starship_class') this.starshipClass});
+  const _$_Starship({required this.name});
 
   factory _$_Starship.fromJson(Map<String, dynamic> json) =>
       _$$_StarshipFromJson(json);
 
   @override
-  final String? name;
-  @override
-  final String? model;
-  @override
-  @JsonKey(name: 'starship_class')
-  final String? starshipClass;
+  final String name;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Starship(name: $name, model: $model, starshipClass: $starshipClass)';
+    return 'Starship(name: $name)';
   }
 
   @override
@@ -167,9 +125,7 @@ class _$_Starship with DiagnosticableTreeMixin implements _Starship {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Starship'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('model', model))
-      ..add(DiagnosticsProperty('starshipClass', starshipClass));
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
@@ -177,18 +133,12 @@ class _$_Starship with DiagnosticableTreeMixin implements _Starship {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Starship &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.model, model) &&
-            const DeepCollectionEquality()
-                .equals(other.starshipClass, starshipClass));
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(model),
-      const DeepCollectionEquality().hash(starshipClass));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -202,20 +152,12 @@ class _$_Starship with DiagnosticableTreeMixin implements _Starship {
 }
 
 abstract class _Starship implements Starship {
-  const factory _Starship(
-      {String? name,
-      String? model,
-      @JsonKey(name: 'starship_class') String? starshipClass}) = _$_Starship;
+  const factory _Starship({required String name}) = _$_Starship;
 
   factory _Starship.fromJson(Map<String, dynamic> json) = _$_Starship.fromJson;
 
   @override
-  String? get name;
-  @override
-  String? get model;
-  @override
-  @JsonKey(name: 'starship_class')
-  String? get starshipClass;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$StarshipCopyWith<_Starship> get copyWith =>

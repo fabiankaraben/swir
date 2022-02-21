@@ -15,6 +15,7 @@ class PersonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15),
+      constraints: const BoxConstraints(maxWidth: 400),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
@@ -63,7 +64,7 @@ class PersonCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              person.name ?? '--',
+                              person.name,
                               style: const TextStyle(
                                 height: 1.1,
                                 fontSize: 22,
@@ -84,7 +85,7 @@ class PersonCard extends StatelessWidget {
                             const SizedBox(height: 4),
                             _PersonAttribute(
                               label: context.l10n.homeGender.toUpperCase(),
-                              value: person.gender?.toUpperCase() ?? '',
+                              value: person.gender.toUpperCase(),
                             ),
                           ],
                         ),

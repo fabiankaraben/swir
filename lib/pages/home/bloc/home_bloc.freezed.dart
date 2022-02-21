@@ -494,7 +494,7 @@ class _$HomeStateTearOff {
   const _$HomeStateTearOff();
 
   _HomeStateAll all(
-      {bool isLoading = false,
+      {bool isLoading = true,
       List<Person> list = const [],
       String searchCriteria = '',
       bool isDownloadingData = false,
@@ -679,7 +679,7 @@ class __$HomeStateAllCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 
 class _$_HomeStateAll with DiagnosticableTreeMixin implements _HomeStateAll {
   const _$_HomeStateAll(
-      {this.isLoading = false,
+      {this.isLoading = true,
       this.list = const [],
       this.searchCriteria = '',
       this.isDownloadingData = false,

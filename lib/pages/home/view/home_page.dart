@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
       )..add(
           const HomeEvent.started(),
         ),
-      child: const HomeView(),
+      child: const _HomeView(),
     );
   }
 }
@@ -38,9 +38,9 @@ class HomePage extends StatelessWidget {
 /// {@template home_view}
 /// Displays the content for the [HomePage].
 /// {@endtemplate}
-class HomeView extends StatelessWidget {
+class _HomeView extends StatelessWidget {
   /// {@macro home_view}
-  const HomeView({Key? key}) : super(key: key);
+  const _HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -164,16 +164,12 @@ class _HomeSections extends StatelessWidget {
         final _people = _searchCriteria.isEmpty
             ? state.list
             : state.list.where(
-                (person) => person.name!
+                (person) => person.name
                     .toLowerCase()
                     .contains(_searchCriteria.toLowerCase()),
               );
 
-        if (state.error.isNotEmpty) {
-          return Center(
-            child: Text(context.l10n.gralSomethingWentWrong),
-          );
-        } else if (state.isLoading) {
+        if (state.isLoading) {
           return const Center(
             child: CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFCC0996)),
@@ -190,49 +186,23 @@ class _HomeSections extends StatelessWidget {
             child: EmptyFilteredListMsg(),
           );
         } else {
-          return ListView(
-            shrinkWrap: true,
+          return SingleChildScrollView(
             padding: const EdgeInsets.symmetric(vertical: 30),
-            children: _people
-                .map(
-                  (person) => Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: PersonCard(person: person),
-                  ),
-                )
-                .toList(),
+            child: Center(
+              child: Wrap(
+                children: _people
+                    .map(
+                      (person) => Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: PersonCard(person: person),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
           );
         }
       },
     );
-
-    // return ResponsiveLayoutBuilder(
-    //   small: (context, child) => Column(
-    //     children: [
-    //       theme.layoutDelegate.startSectionBuilder(state),
-    //       const HomeBoard(),
-    //       theme.layoutDelegate.endSectionBuilder(state),
-    //     ],
-    //   ),
-    //   medium: (context, child) => Column(
-    //     children: [
-    //       theme.layoutDelegate.startSectionBuilder(state),
-    //       const HomeBoard(),
-    //       theme.layoutDelegate.endSectionBuilder(state),
-    //     ],
-    //   ),
-    //   large: (context, child) => Row(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       Expanded(
-    //         child: theme.layoutDelegate.startSectionBuilder(state),
-    //       ),
-    //       const HomeBoard(),
-    //       Expanded(
-    //         child: theme.layoutDelegate.endSectionBuilder(state),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }

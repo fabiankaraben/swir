@@ -34,15 +34,15 @@ class SimpleTheme extends HomeTheme {
   // @override
   // HomeLayoutDelegate get layoutDelegate => const SimpleHomeLayoutDelegate();
 
-  @override
-  List<Object?> get props => [
-        name,
-        hasTimer,
-        hasCountdown,
-        backgroundColor,
-        defaultColor,
-        hoverColor,
-        pressedColor,
-        // layoutDelegate,
-      ];
+  // @override
+  // List<Object?> get props => [
+  //       name,
+  //       hasTimer,
+  //       hasCountdown,
+  //       backgroundColor,
+  //       defaultColor,
+  //       hoverColor,
+  //       pressedColor,
+  //       // layoutDelegate,
+  //     ];
 }

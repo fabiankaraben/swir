@@ -10,18 +10,17 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
   Future<List<Map<String, dynamic>>> readAllPeople() async {
     Map<String, dynamic> data = {};
     var pageNum = 1;
+
     Map<String, dynamic> pageData = json.decode(
-      await http.read(
-        Uri.parse('$_apiEntryPoint/people/?format=json&page=$pageNum'),
-      ),
+      await _httpGet(what: 'people', pageNum: pageNum),
     );
+
     data = pageData;
     while (pageData['next'] != null) {
       pageNum++;
-      pageData = json.decode(
-        await http.read(
-          Uri.parse('$_apiEntryPoint/people/?format=json&page=$pageNum'),
-        ),
+
+      Map<String, dynamic> pageData = json.decode(
+        await _httpGet(what: 'people', pageNum: pageNum),
       );
 
       data['results'].addAll(pageData['results']);
@@ -36,17 +35,13 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
     Map<String, dynamic> data = {};
     var pageNum = 1;
     Map<String, dynamic> pageData = json.decode(
-      await http.read(
-        Uri.parse('$_apiEntryPoint/planets/?format=json&page=$pageNum'),
-      ),
+      await _httpGet(what: 'planets', pageNum: pageNum),
     );
     data = pageData;
     while (pageData['next'] != null) {
       pageNum++;
       pageData = json.decode(
-        await http.read(
-          Uri.parse('$_apiEntryPoint/planets/?format=json&page=$pageNum'),
-        ),
+        await _httpGet(what: 'planets', pageNum: pageNum),
       );
 
       data['results'].addAll(pageData['results']);
@@ -61,17 +56,13 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
     Map<String, dynamic> data = {};
     var pageNum = 1;
     Map<String, dynamic> pageData = json.decode(
-      await http.read(
-        Uri.parse('$_apiEntryPoint/vehicles/?format=json&page=$pageNum'),
-      ),
+      await _httpGet(what: 'vehicles', pageNum: pageNum),
     );
     data = pageData;
     while (pageData['next'] != null) {
       pageNum++;
       pageData = json.decode(
-        await http.read(
-          Uri.parse('$_apiEntryPoint/vehicles/?format=json&page=$pageNum'),
-        ),
+        await _httpGet(what: 'vehicles', pageNum: pageNum),
       );
 
       data['results'].addAll(pageData['results']);
@@ -86,22 +77,28 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
     Map<String, dynamic> data = {};
     var pageNum = 1;
     Map<String, dynamic> pageData = json.decode(
-      await http.read(
-        Uri.parse('$_apiEntryPoint/starships/?format=json&page=$pageNum'),
-      ),
+      await _httpGet(what: 'starships', pageNum: pageNum),
     );
     data = pageData;
     while (pageData['next'] != null) {
       pageNum++;
       pageData = json.decode(
-        await http.read(
-          Uri.parse('$_apiEntryPoint/starships/?format=json&page=$pageNum'),
-        ),
+        await _httpGet(what: 'starships', pageNum: pageNum),
       );
 
       data['results'].addAll(pageData['results']);
     }
 
     return List<Map<String, dynamic>>.from(data['results']);
+  }
+
+  Future<String> _httpGet({String what = 'people', int pageNum = 1}) async {
+    var response = await http.get(
+      Uri.parse('$_apiEntryPoint/$what/?format=json&page=$pageNum'),
+    );
+    if (response.statusCode != 200) {
+      throw Exception('HTTP problem downloading data.');
+    }
+    return response.body;
   }
 }
