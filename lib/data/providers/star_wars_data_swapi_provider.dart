@@ -5,7 +5,7 @@ import 'package:swir/data/services/star_wars_data_service.dart';
 class StarWarsDataSWAPIProvider extends StarWarsDataService {
   final _apiEntryPoint = 'https://swapi.dev/api';
 
-  ///
+  /// Get all people items from swapi.dev
   @override
   Future<List<Map<String, dynamic>>> readAllPeople() async {
     Map<String, dynamic> data = {};
@@ -29,7 +29,7 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
     return List<Map<String, dynamic>>.from(data['results']);
   }
 
-  ///
+  /// Get all planet items from swapi.dev
   @override
   Future<List<Map<String, dynamic>>> readAllPlanets() async {
     Map<String, dynamic> data = {};
@@ -50,7 +50,7 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
     return List<Map<String, dynamic>>.from(data['results']);
   }
 
-  ///
+  /// Get all vehicle items from swapi.dev
   @override
   Future<List<Map<String, dynamic>>> readAllVehicles() async {
     Map<String, dynamic> data = {};
@@ -71,7 +71,7 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
     return List<Map<String, dynamic>>.from(data['results']);
   }
 
-  ///
+  /// Get all starship items from swapi.dev
   @override
   Future<List<Map<String, dynamic>>> readAllStarships() async {
     Map<String, dynamic> data = {};
@@ -92,6 +92,7 @@ class StarWarsDataSWAPIProvider extends StarWarsDataService {
     return List<Map<String, dynamic>>.from(data['results']);
   }
 
+  /// HTTP GET request with error handler
   Future<String> _httpGet({String what = 'people', int pageNum = 1}) async {
     var response = await http.get(
       Uri.parse('$_apiEntryPoint/$what/?format=json&page=$pageNum'),

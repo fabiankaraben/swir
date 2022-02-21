@@ -5,7 +5,7 @@ import 'package:swir/data/services/report_service.dart';
 class PreportTypicodeProvider extends ReportService {
   final _apiEntryPoint = 'https://jsonplaceholder.typicode.com';
 
-  ///
+  /// Send a new invader report
   @override
   Future<void> sendReport(Person person) async {
     final body = {
